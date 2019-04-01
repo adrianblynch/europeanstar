@@ -1,0 +1,6 @@
+export const DISPLAY_DATE_FORMAT = "dd/MM/yyyy"
+export const DATE_FORMAT = "YYYY-MM-DD"
+export const LONDON = "7015400"
+export const PARIS = "8727100"
+export const EBSFLEET = "7015440"
+export const AMSTERDAM = "8400058"
