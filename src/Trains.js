@@ -4,9 +4,9 @@ import { getTrains } from "./selectors"
 import { trainSelected } from "./actions"
 import TrainList from "./TrainList"
 
-const Trains = (props) => {
-
+const Trains = props => {
   const { outboundTrains, inboundTrains, trainSelected } = props
+
   const outboundTrainSelected = (id, classIndex) => trainSelected({ direction: "outbound", id, classIndex })
   const inboundTrainSelected = (id, classIndex) => trainSelected({ direction: "inbound", id, classIndex })
 
@@ -30,4 +30,7 @@ const mapDispatchToProps = {
   trainSelected
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Trains)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Trains)

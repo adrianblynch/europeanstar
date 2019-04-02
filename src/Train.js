@@ -1,7 +1,8 @@
 import React from "react"
 import Cls from "./Cls"
 
-const Train = ({ id, departureTime, duration, arrivalTime, classes, selected, trainSelected }) => {
+const Train = props => {
+  const { id, departureTime, duration, arrivalTime, classes, selected, trainSelected } = props
 
   const clsSelected = index => () => {
     trainSelected(id, index)
@@ -9,8 +10,9 @@ const Train = ({ id, departureTime, duration, arrivalTime, classes, selected, tr
 
   return (
     <div>
-      {id}<br />
-      {selected ? "SELECTED" : null} {departureTime} --- {duration} --> {arrivalTime}
+      {id} {selected ? "SELECTED" : null}
+      <br />
+      {departureTime} --- {duration} --> {arrivalTime}
       {classes.map((cls, index) => (
         <Cls key={index} index={index} {...cls} clsSelected={clsSelected} />
       ))}

@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import { Provider } from "react-redux"
 import store from "./store"
 import Search from "./Search"
-// import Prices from "./Prices"
 import Trains from "./Trains"
 import Basket from "./Basket"
 

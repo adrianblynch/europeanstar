@@ -1,4 +1,5 @@
-import { SEARCH_UPDATED, LOADING_PRICES, PRICES_LOADED, PRICE_SELECTED, TRAIN_SELECTED } from "./actions"
+import { SEARCH_UPDATED, LOADING_TRAINS, TRAINS_LOADED, TRAIN_SELECTED } from "./actions"
+import { STATIONS } from "./constants"
 
 export const search = (state = {}, { type, data }) => {
   if (type === SEARCH_UPDATED) {
@@ -8,80 +9,12 @@ export const search = (state = {}, { type, data }) => {
   return state
 }
 
-const transformPriceDataForState = ({ journey: journeys }) => {
-  return journeys.map(data => {
-    const { id, departureTime, arrivalTime, duration, direct, class: cls } = data
-
-    const classes = cls.map(({ isCheapest, remaining, price: prices }) => {
-      return {
-        isCheapest,
-        remaining,
-        prices
-      }
-    })
-
-    return {
-      id,
-      departureTime,
-      arrivalTime,
-      duration,
-      direct,
-      classes
-    }
-  })
-}
-
-export const prices = (state = {}, { type, data }) => {
-  switch (type) {
-    case PRICES_LOADED: {
-      const newState = {}
-
-      if (data.outbound) {
-        newState.outbound = transformPriceDataForState(data.outbound)
-      }
-
-      if (data.inbound) {
-        newState.inbound = transformPriceDataForState(data.inbound)
-      }
-
-      return newState
-    }
-    default: {
-      return state
-    }
-  }
-}
-
-export const loadingPrices = (state = false, { type, data }) => {
-  if (type === LOADING_PRICES) {
-    return data
-  }
-
-  return state
-}
-
-export const selectedPrices = (state = {}, { type, data }) => {
-  if (type === PRICE_SELECTED) {
-    const { direction, trainId, classIndex } = data
-
-    return Object.assign({}, state, {
-      [direction]: {
-        trainId,
-        classIndex
-      }
-    })
-  }
-
-  return state
-}
+export const loadingTrains = (state = false, { type, data }) => (type === LOADING_TRAINS ? data : state)
 
 export const trains = (state = {}, { type, data }) => {
-
-  if (type === PRICES_LOADED) {
-
+  if (type === TRAINS_LOADED) {
     return [...data.outbound.journey, ...data.inbound.journey].reduce((trains, train) => {
-
-      const { id, departureTime, arrivalTime, duration, direct, class: cls } = train
+      const { id, departureTime, arrivalTime, duration, direct, class: cls, segment: segments } = train
 
       const classes = cls.map(({ isCheapest, remaining, price: prices }) => {
         return {
@@ -91,13 +24,18 @@ export const trains = (state = {}, { type, data }) => {
         }
       })
 
+      const origin = STATIONS[segments[0].originCode]
+      const destination = STATIONS[segments[segments.length - 1].destinationCode]
+
       trains[train.id] = {
         id,
         departureTime,
         arrivalTime,
         duration,
         direct,
-        classes
+        classes,
+        origin,
+        destination
       }
 
       return trains
@@ -107,8 +45,8 @@ export const trains = (state = {}, { type, data }) => {
   return state
 }
 
-const directionalTrains = (direction) => (state = [], { type, data }) => {
-  if (type === PRICES_LOADED) {
+const directionalTrains = direction => (state = [], { type, data }) => {
+  if (type === TRAINS_LOADED) {
     return data[direction].journey.map(train => train.id)
   }
   return state

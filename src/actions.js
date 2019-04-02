@@ -2,9 +2,8 @@ import axios from "axios"
 import { getOutboundDateForUrl, getInboundDateForUrl } from "./selectors"
 
 export const SEARCH_UPDATED = "SEARCH_UPDATED"
-export const LOADING_PRICES = "LOADING_PRICES"
-export const PRICES_LOADED = "PRICES_LOADED"
-export const PRICE_SELECTED = "PRICE_SELECTED"
+export const LOADING_TRAINS = "LOADING_TRAINS"
+export const TRAINS_LOADED = "TRAINS_LOADED"
 export const TRAIN_SELECTED = "TRAIN_SELECTED"
 
 export const searchUpdate = data => {
@@ -15,11 +14,11 @@ export const searchUpdate = data => {
 }
 
 export const loadingPrices = data => {
-  return { type: LOADING_PRICES, data }
+  return { type: LOADING_TRAINS, data }
 }
 
 export const pricesLoaded = data => {
-  return { type: PRICES_LOADED, data }
+  return { type: TRAINS_LOADED, data }
 }
 
 export const loadPrices = () => async (dispatch, getState) => {
@@ -32,32 +31,25 @@ export const loadPrices = () => async (dispatch, getState) => {
   const url = `${baseUrl}/${outboundStation}/${inboundStation}`
   const headers = { "x-apikey": "0aa3d4b7e805493c8e310cfb871c4344" }
 
-  // try {
-    // const response = await axios.request({
-    //   baseUrl,
-    //   url,
-    //   params: {
-    //     "outbound-date": getOutboundDateForUrl(state),
-    //     "inbound-date": getInboundDateForUrl(state),
-    //     adult: adults,
-    //     "booking-type": "standard"
-    //   },
-    //   headers
-    // })
+  try {
+    const response = await axios.request({
+      baseUrl,
+      url,
+      params: {
+        "outbound-date": getOutboundDateForUrl(state),
+        "inbound-date": getInboundDateForUrl(state),
+        adult: adults,
+        "booking-type": "standard"
+      },
+      headers
+    })
 
-    const response = { data: require("./prices.json") }
+    // const response = { data: require("./prices.json") }
 
     dispatch(pricesLoaded(response.data))
     dispatch(loadingPrices(false))
-  // } catch (e) {
-  //   console.log("loadPrices():e", e)
-  // }
-}
-
-export const priceSelected = data => {
-  return {
-    type: PRICE_SELECTED,
-    data
+  } catch (e) {
+    console.log("loadPrices():e", e)
   }
 }
 

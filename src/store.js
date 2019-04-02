@@ -1,40 +1,21 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import thunk from "redux-thunk"
 import freeze from "redux-freeze"
-import {
-  search,
-  prices,
-  loadingPrices,
-  selectedPrices,
-  trains,
-  outboundTrains,
-  inboundTrains,
-  outboundSelectedTrain,
-  inboundSelectedTrain
-} from "./reducers"
+import { search, loadingTrains, trains, outboundTrains, inboundTrains, outboundSelectedTrain, inboundSelectedTrain } from "./reducers"
 
 const initialState = {
   search: {},
-  prices: {},
-  loadingPrices: false,
-  selectedPrices: {},
-  trains: {
-
-  },
+  loadingTrains: false,
+  trains: {},
   outboundTrains: [],
   inboundTrains: [],
-  outboundSelectedTrain: {
-    trainId: "9080",
-    classIndex: 1
-  },
-  inboundSelectedTrain: {}
+  outboundSelectedTrain: { id: null, classIndex: null },
+  inboundSelectedTrain: { id: null, classIndex: null }
 }
 
 const reducers = combineReducers({
   search,
-  prices,
-  loadingPrices,
-  selectedPrices,
+  loadingTrains,
   trains,
   outboundTrains,
   inboundTrains,

@@ -1,63 +1,63 @@
 import fecha from "fecha"
-import { DATE_FORMAT } from "./constants"
+import { DATE_FORMAT, DISPLAY_CLASSES } from "./constants"
 
 export const getDateForUrl = direction => state => fecha.format(new Date(state.search[`${direction}Date`]), DATE_FORMAT)
 
 export const getOutboundDateForUrl = getDateForUrl("outbound")
 export const getInboundDateForUrl = getDateForUrl("inbound")
 
-export const hasPrices = direction => state => !!state.prices[direction]
+export const getBasket = state => {
+  const outbound = {}
+  const inbound = {}
 
-export const hasOutboundPrices = hasPrices("outbound")
-export const hasInboundPrices = hasPrices("inbound")
+  if (state.outboundSelectedTrain && state.outboundSelectedTrain.id) {
+    const selectedTrain = getSelectedTrain(state, "outbound")
+    const outboundTrain = getTrain(state, selectedTrain.id, selectedTrain)
 
-const getSelectedPrices = direction => state => state.selectedPrices[direction]
+    outbound.origin = outboundTrain.origin
+    outbound.destination = outboundTrain.destination
+    outbound.adults = state.search.adults
+    outbound.cls = DISPLAY_CLASSES[selectedTrain.classIndex]
+    outbound.price = outboundTrain.classes && outboundTrain.classes[selectedTrain.classIndex].prices.adult * outbound.adults
+  }
 
-const getPriceClasses = (price, selected, classIndex) => {
-  return [
-    ...price.classes.map((cls, index) => {
-      return {
-        ...cls,
-        selected: selected && classIndex === index
-      }
-    })
-  ]
+  if (state.inboundSelectedTrain && state.inboundSelectedTrain.id) {
+    const selectedTrain = getSelectedTrain(state, "inbound")
+    const inboundTrain = getTrain(state, selectedTrain.id, selectedTrain)
+
+    inbound.origin = inboundTrain.origin
+    inbound.destination = inboundTrain.destination
+    inbound.adults = state.search.adults
+    inbound.cls = DISPLAY_CLASSES[selectedTrain.classIndex]
+    inbound.price = inboundTrain.classes && inboundTrain.classes[selectedTrain.classIndex].prices.adult * inbound.adults
+  }
+
+  return {
+    outbound,
+    inbound
+  }
 }
 
-const getPrices = direction => state => {
-  const selectedPrices = getSelectedPrices(direction)(state)
+const getTrain = (state, id, selectedTrain) => {
+  const train = state.trains[id]
 
-  return (state.prices[direction] || []).map(price => {
+  if (!train) {
+    return {}
+  }
 
-    const selected = selectedPrices && selectedPrices.trainId === price.id
+  const classes = train.classes.map((cls, index) => {
+    const selected = selectedTrain.id === id && selectedTrain.classIndex === index
 
     return {
-      ...price,
-      classes: getPriceClasses(price, selected, selectedPrices && selectedPrices.classIndex),
+      ...cls,
       selected
     }
   })
-}
 
-export const getOutboundPrices = getPrices("outbound")
-export const getInboundPrices = getPrices("inbound")
-
-export const getBasket = (state) => {
   return {
-    outbound: {
-      origin: "London",
-      destination: "Paris",
-      adults: 2,
-      cls: "Standard",
-      price: "400"
-    },
-    inbound: {
-      origin: "Paris",
-      destination: "London",
-      adults: 2,
-      cls: "Standard Premier",
-      price: "800"
-    }
+    ...train,
+    selected: selectedTrain.id === id,
+    classes
   }
 }
 
@@ -66,13 +66,8 @@ const getSelectedTrain = (state, direction) => {
 }
 
 export const getTrains = (state, direction) => {
-
+  const trainIds = state[`${direction}Trains`]
   const selectedTrain = getSelectedTrain(state, direction)
 
-  return state[`${direction}Trains`].map(id => {
-    return {
-      selected: selectedTrain.trainId === id,
-      ...state.trains[id]
-    }
-  })
+  return trainIds.map(id => getTrain(state, id, selectedTrain))
 }
