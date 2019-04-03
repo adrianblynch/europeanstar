@@ -21,15 +21,20 @@
     "styled-components": "^4.2.0",
     "styled-components-breakpoint": "^2.1.1"
   },
+  "devDependencies": {
+    "prettier": "^1.16.4",
+    "source-map-explorer": "^1.8.0"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "react-scripts build",
     "postbuild": "yarn compress",
     "compress": "node compress.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --print-width 160 --no-semi --write src/**/*.js *.js"
+    "format": "prettier --print-width 160 --no-semi --write src/**/*.js *.js",
+    "analyse": "source-map-explorer 'build/static/js/*.js'"
   },
   "engines": {
     "node": "11.13.0",
@@ -43,8 +48,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "prettier": "^1.16.4"
-  }
+  ]
 }
