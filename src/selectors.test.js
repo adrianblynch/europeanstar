@@ -23,27 +23,4 @@ describe("selectors", () => {
       })
     })
   })
-
-  describe("hasPrices()", () => {
-    it("returns a function", () => {
-      const result = hasPrices("outbound")
-      expect(typeof result).toBe("function")
-    })
-
-    describe("when returned function is used", () => {
-      const hasOutboundPrices = hasPrices("outbound")
-
-      it("returns true when outbound data exists", () => {
-        const state = { prices: { outbound: {} } }
-        const result = hasOutboundPrices(state)
-        expect(result).toBe(true)
-      })
-
-      it("returns false when no outbound data exists", () => {
-        const state = { prices: {} }
-        const result = hasOutboundPrices(state)
-        expect(result).toBe(false)
-      })
-    })
-  })
 })
