@@ -7,6 +7,7 @@ import { connect } from "react-redux"
 import { DISPLAY_DATE_FORMAT, LONDON, PARIS, EBSFLEET, AMSTERDAM } from "./constants"
 import { searchUpdate, loadPrices } from "./actions"
 import SectionTitle from "./SectionTitle"
+import Section from "./Section"
 
 // Not ideal but styling the datepicker is a little tricky
 const DatePickerWrapper = styled.div`
@@ -20,7 +21,7 @@ const DatePickerWrapper = styled.div`
     width: 100%;
     font-size: 14px;
     border: 1px solid #888;
-    border-radius: 3px;
+    border-radius: 5px;
   }
 `
 
@@ -30,20 +31,20 @@ const DatePicker = ({ ...props }) => (
   </DatePickerWrapper>
 )
 
-const now = new Date().toString()
+const now = new Date(2019, 3, 5).toString()
 
-const Form = styled.form`
-  background-color: #06183d;
-  color: white;
-  padding: 16px;
-  ${breakpoint("md")`
-    border-radius: 4px;
-  `}
-`
+// const Form = styled.form`
+//   background-color: #06183d;
+//   color: white;
+//   padding: 16px;
+//   ${breakpoint("md")`
+//     border-radius: 5px;
+//   `}
+// `
 
 // Issues with flexboxing fieldsets means using a div
 const Fieldset = styled.div`
-  --radius: 4px;
+  --radius: 5px;
   background-color: white;
   margin-bottom: 2px;
   &:first-of-type {
@@ -94,7 +95,7 @@ const FieldsetItem = styled.div`
     width: 100%;
     font-size: 14px;
     border: 1px solid #888;
-    border-radius: 3px;
+    border-radius: 5px;
   }
 
   & > select {
@@ -116,6 +117,9 @@ const Button = styled.button`
   cursor: pointer;
   &:hover {
     background-color: #ffea6a;
+  }
+  &:disabled {
+    background-color: #e6e6e7;
   }
 `
 
@@ -143,61 +147,65 @@ class Search extends React.Component {
 
   render() {
     const { outboundStation, outboundDate, inboundDate, inboundStation, adults, youths, children } = this.state
+    const { loadingTrains } = this.props
 
     return (
-      <Form>
-        <SectionTitle>Search</SectionTitle>
-        <Fieldset>
-          <FieldsetItem>
-            <label>From:</label>
-            <select value={outboundStation} onChange={this.onChange} name="outboundStation">
-              <option value={LONDON}>London</option>
-              <option value={EBSFLEET}>Ebsfleet</option>
-            </select>
-          </FieldsetItem>
-          <FieldsetItem>
-            <label>To:</label>
-            <select value={inboundStation} onChange={this.onChange} name="inboundStation">
-              <option value={PARIS}>Paris</option>
-              <option value={AMSTERDAM}>Amsterdam</option>
-            </select>
-          </FieldsetItem>
-        </Fieldset>
+      <Section>
+        <form>
+          <SectionTitle>Search</SectionTitle>
+          <Fieldset>
+            <FieldsetItem>
+              <label>From:</label>
+              <select value={outboundStation} onChange={this.onChange} name="outboundStation">
+                <option value={LONDON}>London</option>
+                <option value={EBSFLEET}>Ebsfleet</option>
+              </select>
+            </FieldsetItem>
+            <FieldsetItem>
+              <label>To:</label>
+              <select value={inboundStation} onChange={this.onChange} name="inboundStation">
+                <option value={PARIS}>Paris</option>
+                <option value={AMSTERDAM}>Amsterdam</option>
+              </select>
+            </FieldsetItem>
+          </Fieldset>
 
-        <Fieldset>
-          <FieldsetItem>
-            <label>Leaving:</label>
-            <DatePicker selected={outboundDate} onChange={this.outboundDateSelected} />
-          </FieldsetItem>
-          <FieldsetItem>
-            <label>Returning:</label>
-            <DatePicker selected={inboundDate} onChange={this.inboundDateSelected} />
-          </FieldsetItem>
-        </Fieldset>
+          <Fieldset>
+            <FieldsetItem>
+              <label>Leaving:</label>
+              <DatePicker selected={outboundDate} onChange={this.outboundDateSelected} />
+            </FieldsetItem>
+            <FieldsetItem>
+              <label>Returning:</label>
+              <DatePicker selected={inboundDate} onChange={this.inboundDateSelected} />
+            </FieldsetItem>
+          </Fieldset>
 
-        <Fieldset>
-          <FieldsetItem>
-            <label>Adults:</label> <input type="text" value={adults} onChange={this.onChange} name="adults" />
-          </FieldsetItem>
-          <FieldsetItem>
-            <label>Youths:</label> <input type="text" value={youths} onChange={this.onChange} name="youths" />
-          </FieldsetItem>
-          <FieldsetItem>
-            <label>Children:</label> <input type="text" value={children} onChange={this.onChange} name="children" />
-          </FieldsetItem>
-        </Fieldset>
+          <Fieldset>
+            <FieldsetItem>
+              <label>Adults:</label> <input type="text" value={adults} onChange={this.onChange} name="adults" />
+            </FieldsetItem>
+            <FieldsetItem>
+              <label>Youths:</label> <input type="text" value={youths} onChange={this.onChange} name="youths" />
+            </FieldsetItem>
+            <FieldsetItem>
+              <label>Children:</label> <input type="text" value={children} onChange={this.onChange} name="children" />
+            </FieldsetItem>
+          </Fieldset>
 
-        <Button type="submit" onClick={this.submit}>
-          Search
-        </Button>
-      </Form>
+          <Button type="submit" onClick={this.submit} disabled={loadingTrains}>
+            Search
+          </Button>
+        </form>
+      </Section>
     )
   }
 }
 
+const mapStateToProps = state => ({ loadingTrains: state.loadingTrains })
 const mapDispatchToProps = { searchUpdate, loadPrices }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Search)

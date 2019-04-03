@@ -13,16 +13,16 @@ export const searchUpdate = data => {
   }
 }
 
-export const loadingPrices = data => {
+export const loadingTrains = data => {
   return { type: LOADING_TRAINS, data }
 }
 
-export const pricesLoaded = data => {
+export const trainsLoaded = data => {
   return { type: TRAINS_LOADED, data }
 }
 
 export const loadPrices = () => async (dispatch, getState) => {
-  dispatch(loadingPrices(true))
+  dispatch(loadingTrains(true))
 
   const state = getState()
   const { outboundStation, inboundStation, adults } = state.search
@@ -46,8 +46,8 @@ export const loadPrices = () => async (dispatch, getState) => {
 
     // const response = { data: require("./prices.json") }
 
-    dispatch(pricesLoaded(response.data))
-    dispatch(loadingPrices(false))
+    dispatch(trainsLoaded(response.data))
+    dispatch(loadingTrains(false))
   } catch (e) {
     console.log("loadPrices():e", e)
   }

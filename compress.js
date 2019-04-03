@@ -17,7 +17,6 @@ logPaths("Compressing", uncompressedPaths)
 const compressedPaths = []
 
 uncompressedPaths.forEach(path => {
-
   const compressedGzipPath = `${path}.gz`
 
   fs.createReadStream(path)
@@ -28,7 +27,6 @@ uncompressedPaths.forEach(path => {
 
   // Available in Node > 11.13.0 - If definitely needed, userland brotli packages will do the trick too
   if (zlib.createBrotliCompress) {
-
     const compressedBrotliPath = `${path}.br`
 
     fs.createReadStream(path)
