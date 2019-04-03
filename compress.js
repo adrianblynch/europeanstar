@@ -14,13 +14,29 @@ const uncompressedPaths = getPaths(uncompressedTree)
 
 logPaths("Compressing", uncompressedPaths)
 
+const compressedPaths = []
+
 uncompressedPaths.forEach(path => {
+
+  const compressedGzipPath = `${path}.gz`
+
   fs.createReadStream(path)
     .pipe(zlib.createGzip())
-    .pipe(fs.createWriteStream(`${path}.gz`))
-})
+    .pipe(fs.createWriteStream(compressedGzipPath))
 
-const compressedTree = getTree("build", "gz")
-const compressedPaths = getPaths(compressedTree)
+  compressedPaths.push(compressedGzipPath)
+
+  // Available in Node > 11.13.0 - If definitely needed, userland brotli packages will do the trick too
+  if (zlib.createBrotliCompress) {
+
+    const compressedBrotliPath = `${path}.br`
+
+    fs.createReadStream(path)
+      .pipe(zlib.createBrotliCompress())
+      .pipe(fs.createWriteStream(compressedBrotliPath))
+
+    compressedPaths.push(compressedBrotliPath)
+  }
+})
 
 logPaths("Compressed", compressedPaths)
