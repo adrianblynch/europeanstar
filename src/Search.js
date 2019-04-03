@@ -36,7 +36,7 @@ const Form = styled.form`
   background-color: #06183d;
   color: white;
   padding: 16px;
-  ${breakpoint('md')`
+  ${breakpoint("md")`
     border-radius: 4px;
   `}
 `
