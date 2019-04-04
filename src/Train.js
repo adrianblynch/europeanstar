@@ -16,7 +16,6 @@ const Train = props => {
       {classes.map((cls, index) => (
         <Cls key={index} index={index} {...cls} clsSelected={clsSelected} />
       ))}
-      <hr />
     </div>
   )
 }

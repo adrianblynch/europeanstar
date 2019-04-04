@@ -8,6 +8,7 @@ import { DISPLAY_DATE_FORMAT, LONDON, PARIS, EBSFLEET, AMSTERDAM } from "./const
 import { searchUpdate, loadPrices } from "./actions"
 import SectionTitle from "./SectionTitle"
 import Section from "./Section"
+import SectionItem from "./SectionItem"
 
 // Not ideal but styling the datepicker is a little tricky
 const DatePickerWrapper = styled.div`
@@ -33,76 +34,52 @@ const DatePicker = ({ ...props }) => (
 
 const now = new Date(2019, 3, 5).toString()
 
-// const Form = styled.form`
-//   background-color: #06183d;
-//   color: white;
-//   padding: 16px;
-//   ${breakpoint("md")`
-//     border-radius: 5px;
-//   `}
-// `
-
-// Issues with flexboxing fieldsets means using a div
-const Fieldset = styled.div`
-  --radius: 5px;
-  background-color: white;
-  margin-bottom: 2px;
-  &:first-of-type {
-    border-radius: var(--radius) var(--radius) 0 0;
-  }
-  &:last-of-type {
-    border-radius: 0 0 var(--radius) var(--radius);
-  }
-  ${breakpoint("md")`
-    display: flex;
-    padding: 15px 20px 15px 20px;
-  `}
-`
+const Fieldset = styled.div``
 
 const FieldsetItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding: 5px 10px 5px 10px;
+  // display: flex;
+  // flex-direction: column;
+  // flex-grow: 1;
+  // padding: 5px 10px 5px 10px;
 
-  ${breakpoint("md")`
-    width: 50%;
-    padding: initial;
-    margin-right: 10px;
-  `}
+  // ${breakpoint("md")`
+  //   width: 50%;
+  //   padding: initial;
+  //   margin-right: 10px;
+  // `}
 
-  &:first-child {
-    padding-top: 10px;
-    ${breakpoint("md")`
-      padding-top: initial;
-    `}
-  }
+  // &:first-child {
+  //   padding-top: 10px;
+  //   ${breakpoint("md")`
+  //     padding-top: initial;
+  //   `}
+  // }
 
-  &:last-child {
-    padding-bottom: 10px;
-    ${breakpoint("md")`
-      padding-bottom: initial;
-      margin-right: 0px;
-    `}
-  }
+  // &:last-child {
+  //   padding-bottom: 10px;
+  //   ${breakpoint("md")`
+  //     padding-bottom: initial;
+  //     margin-right: 0px;
+  //   `}
+  // }
 
-  & > label {
-    color: #55565a;
-    font-size: 12px;
-  }
+  // & > label {
+  //   color: #55565a;
+  //   font-size: 12px;
+  // }
 
-  & > input[type="text"] {
-    width: 100%;
-    font-size: 14px;
-    border: 1px solid #888;
-    border-radius: 5px;
-  }
+  // & > input[type="text"] {
+  //   width: 100%;
+  //   font-size: 14px;
+  //   border: 1px solid #888;
+  //   border-radius: 5px;
+  // }
 
-  & > select {
-    font-size: 14px;
-    border: 1px solid #888;
-    background-color: white;
-  }
+  // & > select {
+  //   font-size: 14px;
+  //   border: 1px solid #888;
+  //   background-color: white;
+  // }
 `
 
 const Button = styled.button`
@@ -145,6 +122,11 @@ class Search extends React.Component {
     this.props.loadPrices()
   }
 
+  // TEMP
+  componentDidMount() {
+    this.submit({preventDefault: () => {}})
+  }
+
   render() {
     const { outboundStation, outboundDate, inboundDate, inboundStation, adults, youths, children } = this.state
     const { loadingTrains } = this.props
@@ -153,45 +135,45 @@ class Search extends React.Component {
       <Section>
         <form>
           <SectionTitle>Search</SectionTitle>
-          <Fieldset>
-            <FieldsetItem>
+          <SectionItem>
+            <Fieldset>
               <label>From:</label>
               <select value={outboundStation} onChange={this.onChange} name="outboundStation">
                 <option value={LONDON}>London</option>
                 <option value={EBSFLEET}>Ebsfleet</option>
               </select>
-            </FieldsetItem>
-            <FieldsetItem>
+            </Fieldset>
+            <Fieldset>
               <label>To:</label>
               <select value={inboundStation} onChange={this.onChange} name="inboundStation">
                 <option value={PARIS}>Paris</option>
                 <option value={AMSTERDAM}>Amsterdam</option>
               </select>
-            </FieldsetItem>
-          </Fieldset>
+            </Fieldset>
+          </SectionItem>
 
-          <Fieldset>
-            <FieldsetItem>
+          <SectionItem>
+            <Fieldset>
               <label>Leaving:</label>
               <DatePicker selected={outboundDate} onChange={this.outboundDateSelected} />
-            </FieldsetItem>
-            <FieldsetItem>
+            </Fieldset>
+            <Fieldset>
               <label>Returning:</label>
               <DatePicker selected={inboundDate} onChange={this.inboundDateSelected} />
-            </FieldsetItem>
-          </Fieldset>
+            </Fieldset>
+          </SectionItem>
 
-          <Fieldset>
-            <FieldsetItem>
+          <SectionItem>
+            <Fieldset>
               <label>Adults:</label> <input type="text" value={adults} onChange={this.onChange} name="adults" />
-            </FieldsetItem>
-            <FieldsetItem>
+            </Fieldset>
+            <Fieldset>
               <label>Youths:</label> <input type="text" value={youths} onChange={this.onChange} name="youths" />
-            </FieldsetItem>
-            <FieldsetItem>
+            </Fieldset>
+            <Fieldset>
               <label>Children:</label> <input type="text" value={children} onChange={this.onChange} name="children" />
-            </FieldsetItem>
-          </Fieldset>
+            </Fieldset>
+          </SectionItem>
 
           <Button type="submit" onClick={this.submit} disabled={loadingTrains}>
             Search

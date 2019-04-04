@@ -71,3 +71,7 @@ export const getTrains = (state, direction) => {
 
   return trainIds.map(id => getTrain(state, id, selectedTrain))
 }
+
+export const isReturn = state => {
+  return !!state.search.inboundDate
+}
