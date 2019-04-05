@@ -1,6 +1,4 @@
 import React from "react"
-import styled from "styled-components"
-import breakpoint from "styled-components-breakpoint"
 import { connect } from "react-redux"
 import { LONDON, PARIS, EBSFLEET, AMSTERDAM } from "./constants"
 import { searchUpdate, loadTrains } from "./actions"

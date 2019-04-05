@@ -8,8 +8,8 @@ import Loading from "./Loading"
 const TrainList = ({ loadingTrains, label, trains, trainSelected }) => {
   const list = trains.map(train => {
     return (
-      <SectionItem>
-        <Train key={train.id} trainSelected={trainSelected} {...train} />
+      <SectionItem key={train.id}>
+        <Train trainSelected={trainSelected} {...train} />
       </SectionItem>
     )
   })
