@@ -9,7 +9,7 @@ const SectionItem = styled.div`
   background-color: white;
   color: #55565a;
   margin-bottom: 2px;
-  padding: 15px 20px;
+  padding: 15px 15px;
 
   &:first-of-type {
     border-top-left-radius: var(--radius);
