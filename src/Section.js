@@ -11,4 +11,8 @@ const Section = styled.div`
   `}
 `
 
+Section.defaultProps = {
+  "data-id": "Section"
+}
+
 export default Section

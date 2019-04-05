@@ -21,7 +21,7 @@ export const trainsLoaded = data => {
   return { type: TRAINS_LOADED, data }
 }
 
-export const loadPrices = () => async (dispatch, getState) => {
+export const loadTrains = () => async (dispatch, getState) => {
   dispatch(loadingTrains(true))
 
   const state = getState()
@@ -49,7 +49,7 @@ export const loadPrices = () => async (dispatch, getState) => {
     dispatch(trainsLoaded(response.data))
     dispatch(loadingTrains(false))
   } catch (e) {
-    console.log("loadPrices():e", e)
+    console.log("loadTrains():e", e)
   }
 }
 

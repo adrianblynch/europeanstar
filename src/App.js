@@ -9,7 +9,7 @@ import Basket from "./Basket"
 
 const theme = {
   breakpoints: {
-    sm: 0,
+    sm: 320,
     md: 600,
     lg: 900
   }

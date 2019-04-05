@@ -1,16 +1,15 @@
 import styled from "styled-components"
-import breakpoint from "styled-components-breakpoint"
 
 const SectionItem = styled.div`
   --radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+
   background-color: white;
   color: #55565a;
   margin-bottom: 2px;
   padding: 15px 20px;
-
-  ${breakpoint("md")`
-    display: flex;
-  `}
 
   &:first-of-type {
     border-top-left-radius: var(--radius);
@@ -21,5 +20,9 @@ const SectionItem = styled.div`
     border-bottom-right-radius: var(--radius);
   }
 `
+
+SectionItem.defaultProps = {
+  "data-id": "SectionItem"
+}
 
 export default SectionItem

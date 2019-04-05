@@ -6,7 +6,6 @@ import SectionTitle from "./SectionTitle"
 import Loading from "./Loading"
 
 const TrainList = ({ loadingTrains, label, trains, trainSelected }) => {
-
   const list = trains.map(train => {
     return (
       <SectionItem>
