@@ -8,6 +8,10 @@
     }
   ],
   "env": {
+    "CONFIG_ENV": {
+      "value": "review",
+      "required": true
+    }
   },
   "formation": {
     "web": {
