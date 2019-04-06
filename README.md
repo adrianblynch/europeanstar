@@ -24,3 +24,4 @@ A single page app for viewing Eurostar trains.
 - *Rollbar* tracks browser errors (at least until the demo runs out!)
 - Repo notifications sent to *Slack*
 - *Greenkeeper* checks for package updates
+- *Prettier* keeps the code looking awesome
