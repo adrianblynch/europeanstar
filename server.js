@@ -1,7 +1,17 @@
 const Koa = require("koa")
 const koaStatic = require("koa-static")
-
+const fs = require("fs")
+const dotenv = require("dotenv")
 const app = new Koa()
+
+dotenv.config()
+
+const CONFIG_ENV = process.env.CONFIG_ENV || "development"
+
+// Inject config values
+const indexFilePath = "build/index.html"
+const indexFileContent = fs.readFileSync(indexFilePath, "utf8")
+fs.writeFileSync(indexFilePath, indexFileContent.replace(/CONFIG_ENV="(development|staging|production)"/, `CONFIG_ENV="${CONFIG_ENV}"`))
 
 app.use(
   koaStatic("build", {
@@ -16,4 +26,4 @@ app.use(
   })
 )
 
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 3001)
