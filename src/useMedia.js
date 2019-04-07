@@ -13,6 +13,14 @@ const useMedia = breakpoint => {
   
     const [, previousWidth] = array[index - 1] || []
     const [, nextWidth] = array[index + 1] || []
+
+    /*
+      Construct a series of media queries in the form:
+                               (max-width: 320px)
+        (min-width: 321px) and (max-width: 600px)
+        (min-width: 601px) and (max-width: 900px)
+        (min-width: 901px)
+    */
   
     if (previousWidth) {
       query += `(min-width: ${previousWidth + 1}px)`

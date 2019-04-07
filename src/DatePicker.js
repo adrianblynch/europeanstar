@@ -35,10 +35,12 @@ const DatePickerWrapper = styled.div`
 `
 
 const DatePicker = (props) => {
+  const isExtraSmall = useMedia("xs")
   const isSmall = useMedia("sm")
+  const withPortal = isExtraSmall || isSmall
   return (
     <DatePickerWrapper>
-      <ReactDatePicker withPortal={isSmall} {...props} selected={new Date(props.selected)} dateFormat={DISPLAY_DATE_FORMAT} minDate={new Date()} />
+      <ReactDatePicker withPortal={withPortal} {...props} selected={new Date(props.selected)} dateFormat={DISPLAY_DATE_FORMAT} minDate={new Date()} />
     </DatePickerWrapper>
   )
 }

@@ -15,11 +15,11 @@ export const STATIONS = {
   "8400058": "Amsterdam"
 }
 
-// TODO: Make xs as our sm is up to 320 and the iPhone 5/SE is the first phone to be that wide
 export const THEME = {
   breakpoints: {
-    sm: 320,
-    md: 600,
-    lg: 900
+    xs: 320,
+    sm: 600,
+    md: 900,
+    lg: 1200
   }
 }
