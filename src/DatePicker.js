@@ -4,7 +4,7 @@ import breakpoint from "styled-components-breakpoint"
 import ReactDatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { DISPLAY_DATE_FORMAT } from "./constants"
-import useMedia from "./useMedia"
+import { useMedia } from "./hooks"
 
 // Not ideal but styling the datepicker is a little tricky so duplicate styles are here
 const DatePickerWrapper = styled.div`
