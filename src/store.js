@@ -22,8 +22,15 @@ const reducers = combineReducers({
   outboundSelectedTrain,
   inboundSelectedTrain
 })
+
+const middleware = [thunk]
+
+if (process.env.NODE_ENV !== "production") {
+  middleware.unshift(freeze)
+}
+
 const enhancers = compose(
-  applyMiddleware(freeze, thunk),
+  applyMiddleware(...middleware),
   window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
 )
 
