@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import { Provider } from "react-redux"
 import styled, { ThemeProvider } from "styled-components"
 import breakpoint from "styled-components-breakpoint"
@@ -6,14 +6,7 @@ import store from "./store"
 import Search from "./Search"
 import Trains from "./Trains"
 import Basket from "./Basket"
-
-const theme = {
-  breakpoints: {
-    sm: 320,
-    md: 600,
-    lg: 900
-  }
-}
+import { THEME } from "./constants"
 
 const AppWrapper = styled.div`
   margin: 0 auto;
@@ -24,20 +17,18 @@ const AppWrapper = styled.div`
   `}
 `
 
-class App extends Component {
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <Provider store={store}>
-          <AppWrapper>
-            <Search />
-            <Trains />
-            <Basket />
-          </AppWrapper>
-        </Provider>
-      </ThemeProvider>
-    )
-  }
+const App = () => {
+  return (
+    <ThemeProvider theme={THEME}>
+      <Provider store={store}>
+        <AppWrapper>
+          <Search />
+          <Trains />
+          <Basket />
+        </AppWrapper>
+      </Provider>
+    </ThemeProvider>
+  )
 }
 
 export default App

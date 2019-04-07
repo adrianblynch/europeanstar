@@ -10,14 +10,15 @@ import Fieldsets from "./Fieldsets"
 import Button from "./Button"
 import DatePicker from "./DatePicker"
 
-const now = new Date(2019, 3, 7).toString()
+const now = new Date()
+const tomorrow = now.setDate(now.getDate() + 1)
 
 class Search extends React.Component {
   state = {
     outboundStation: LONDON,
-    outboundDate: now,
+    outboundDate: tomorrow,
     inboundStation: PARIS,
-    inboundDate: now,
+    inboundDate: tomorrow,
     adults: 2,
     youths: 0,
     children: 0

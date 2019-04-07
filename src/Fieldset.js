@@ -4,15 +4,21 @@ import breakpoint from "styled-components-breakpoint"
 const Fieldset = styled.div`
   --borderColour: #888;
   --backgroundColour: #f8f8f8;
+  --fontColour: #555;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  font-size: 14px;
+  font-size: 22px;
   margin-top: 10px;
 
   ${breakpoint("md")`
     margin-top: 0;
     margin-left: 10px;
+    font-size: 18px;
+  `}
+
+  ${breakpoint("lg")`
+    font-size: 16px;
   `}
 
   &:first-child {
@@ -21,7 +27,7 @@ const Fieldset = styled.div`
   }
 
   & > label {
-    font-size: inherit;
+    font-size: 14px;
     color: #55565a;
     padding: 0;
     margin: 0;
@@ -32,6 +38,8 @@ const Fieldset = styled.div`
     background-color: var(--backgroundColour);
     border: 1px solid var(--borderColour);
     border-radius: 5px;
+    padding-left: 5px;
+    color: var(--fontColour);
   }
 
   & > select {
@@ -39,6 +47,7 @@ const Fieldset = styled.div`
     background-color: var(--backgroundColour);
     border: 1px solid var(--borderColour);
     border-radius: 5px;
+    color: var(--fontColour);
   }
 `
 Fieldset.defaultProps = {
