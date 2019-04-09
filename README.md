@@ -38,3 +38,4 @@ A single page app for viewing trains going to Europe.
 - ~~Start using styled-tools~~
 - Highlight the chosen fare in class colour
 - Hide classes until trains are shown
+- ~~Stop Redux Logger from outputting in tests~~

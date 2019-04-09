@@ -25,12 +25,14 @@ const reducers = combineReducers({
 })
 
 const middleware = [thunk]
+const env = process.env.NODE_ENV
 
-if (process.env.NODE_ENV !== "production") {
+if (env !== "production") {
   middleware.unshift(freeze)
+}
 
+if (env === "development") {
   const logger = createLogger({ collapsed: true })
-
   middleware.push(logger)
 }
 
