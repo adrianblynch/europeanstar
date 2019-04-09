@@ -51,31 +51,22 @@ class Search extends React.Component {
           <SectionItem>
             <Fieldsets>
               <Fieldset>
-                <label>From:</label>
-                <select value={outboundStation} onChange={this.onChange} name="outboundStation">
-                  <option value={LONDON}>London</option>
-                  <option value={EBSFLEET}>Ebsfleet</option>
-                </select>
+                <label>
+                  From:<br />
+                  <select value={outboundStation} onChange={this.onChange} name="outboundStation">
+                    <option value={LONDON}>London</option>
+                    <option value={EBSFLEET}>Ebsfleet</option>
+                  </select>
+                </label>
               </Fieldset>
               <Fieldset>
-                <label>To:</label>
-                <select value={inboundStation} onChange={this.onChange} name="inboundStation">
-                  <option value={PARIS}>Paris</option>
-                  <option value={AMSTERDAM}>Amsterdam</option>
-                </select>
-              </Fieldset>
-            </Fieldsets>
-          </SectionItem>
-
-          <SectionItem>
-            <Fieldsets>
-              <Fieldset>
-                <label>Leaving:</label>
-                <DatePicker selected={outboundDate} onChange={this.outboundDateSelected} />
-              </Fieldset>
-              <Fieldset>
-                <label>Returning:</label>
-                <DatePicker selected={inboundDate} onChange={this.inboundDateSelected} />
+                <label>
+                  To:<br/>
+                  <select value={inboundStation} onChange={this.onChange} name="inboundStation">
+                    <option value={PARIS}>Paris</option>
+                    <option value={AMSTERDAM}>Amsterdam</option>
+                  </select>
+                </label>
               </Fieldset>
             </Fieldsets>
           </SectionItem>
@@ -83,16 +74,39 @@ class Search extends React.Component {
           <SectionItem>
             <Fieldsets>
               <Fieldset>
-                <label>Adults:</label>
-                <input type="text" value={adults} onChange={this.onChange} name="adults" />
+                <label>
+                  Leaving:<br />
+                  <DatePicker selected={outboundDate} onChange={this.outboundDateSelected} />
+                </label>
               </Fieldset>
               <Fieldset>
-                <label>Youths:</label>
-                <input type="text" value={youths} onChange={this.onChange} name="youths" />
+                <label>
+                  Returning:<br />
+                  <DatePicker selected={inboundDate} onChange={this.inboundDateSelected} />
+                </label>
+              </Fieldset>
+            </Fieldsets>
+          </SectionItem>
+
+          <SectionItem>
+            <Fieldsets>
+              <Fieldset>
+                <label>
+                  Adults:<br />
+                  <input type="text" value={adults} onChange={this.onChange} name="adults" />
+                </label>
               </Fieldset>
               <Fieldset>
-                <label>Children:</label>
-                <input type="text" value={children} onChange={this.onChange} name="children" />
+                <label>
+                  Youths:<br />
+                  <input type="text" value={youths} onChange={this.onChange} name="youths" />
+                </label>
+              </Fieldset>
+              <Fieldset>
+                <label>
+                  Children:<br />
+                  <input type="text" value={children} onChange={this.onChange} name="children" />
+                </label>
               </Fieldset>
             </Fieldsets>
           </SectionItem>

@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import breakpoint from "styled-components-breakpoint"
 import ReactDatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { DISPLAY_DATE_FORMAT } from "./constants"
@@ -17,20 +16,11 @@ const DatePickerWrapper = styled.div`
   }
   & input {
     width: inherit;
-    font-size: 22px;
     background-color: #f8f8f8;
     border: 1px solid #888;
     border-radius: 5px;
     padding-left: 5px;
     color: #555;
-
-    ${breakpoint("md")`
-      font-size: 18px;
-    `}
-
-    ${breakpoint("lg")`
-      font-size: 16px;
-    `}
   }
 `
 

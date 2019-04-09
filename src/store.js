@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import thunk from "redux-thunk"
 import freeze from "redux-freeze"
+import { createLogger } from 'redux-logger'
 import { search, loadingTrains, trains, outboundTrains, inboundTrains, outboundSelectedTrain, inboundSelectedTrain } from "./reducers"
 
 const initialState = {
@@ -27,6 +28,10 @@ const middleware = [thunk]
 
 if (process.env.NODE_ENV !== "production") {
   middleware.unshift(freeze)
+
+  const logger = createLogger({ collapsed: true })
+
+  middleware.push(logger)
 }
 
 const enhancers = compose(

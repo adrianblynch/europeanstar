@@ -8,17 +8,11 @@ const Fieldset = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  font-size: 22px;
   margin-top: 10px;
 
   ${breakpoint("md")`
     margin-top: 0;
     margin-left: 10px;
-    font-size: 18px;
-  `}
-
-  ${breakpoint("lg")`
-    font-size: 16px;
   `}
 
   &:first-child {
@@ -27,14 +21,14 @@ const Fieldset = styled.div`
   }
 
   & > label {
-    font-size: 14px;
+    display: flex;
+    flex-direction: column;
     color: #55565a;
     padding: 0;
     margin: 0;
   }
 
   & > input[type="text"] {
-    font-size: inherit;
     background-color: var(--backgroundColour);
     border: 1px solid var(--borderColour);
     border-radius: 5px;
@@ -42,8 +36,7 @@ const Fieldset = styled.div`
     color: var(--fontColour);
   }
 
-  & > select {
-    font-size: inherit;
+  & select {
     background-color: var(--backgroundColour);
     border: 1px solid var(--borderColour);
     border-radius: 5px;
