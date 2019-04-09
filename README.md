@@ -37,3 +37,4 @@ A single page app for viewing trains going to Europe.
 - Extract and centralise class colour styles
 - ~~Start using styled-tools~~
 - Highlight the chosen fare in class colour
+- Hide classes until trains are shown
