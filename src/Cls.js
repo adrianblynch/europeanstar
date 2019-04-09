@@ -1,12 +1,22 @@
 import React, { Fragment } from "react"
 import styled from "styled-components"
+import { ifProp } from "styled-tools"
 
 const StyledCls = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 33.3%;
+  padding: 0 5px 0 5px;
+  ${ifProp("selectable", "cursor: pointer")};
+  ${ifProp("selectable", `
+    &:hover {
+      background-color: white;
+    }
+  `)}
+  ${ifProp("selected", "background-color: white;")}
   &:nth-child(1) {
     border-top: 10px solid #ffe600;
   }
@@ -30,10 +40,11 @@ const Price = styled.div`
 `
 Price.defaultProps = { "data-id": "Price" }
 
-const Remaining = styled.div`${(props) => `
-  ${props.hide ? "visibility: hidden;" : ""}
+const Remaining = styled.div`
+  // 'visibility' over 'display' to maintain the space when rendered
+  ${props => (props.hide ? "visibility: hidden;" : "")}
   font-size: 13px;
-`}`
+`
 Remaining.defaultProps = { "data-id": "Remaining" }
 
 const NoTickets = styled.div`
@@ -44,14 +55,20 @@ NoTickets.defaultProps = { "data-id": "NoTickets" }
 
 const Cls = props => {
   const { index, prices, remaining, isNotAvailable, selected, clsSelected } = props
+  const showNotAvailable = isNotAvailable
   const showSoldOut = !isNotAvailable && remaining === 0
   const showPrice = !showSoldOut && prices && prices.adult
-  const onClick = clsSelected(index)
+  const selectable = showPrice && !selected
   const hideRemaining = remaining > 50
+  const onClick = (selectable && !selected) ? clsSelected(index) : () => {}
   return (
-    <StyledCls onClick={onClick}>
-      {isNotAvailable && <NoTickets>N/A</NoTickets>}
-      {showSoldOut && <NoTickets>Sold<br />out</NoTickets>}
+    <StyledCls onClick={onClick} selectable={selectable} selected={selected}>
+      {showNotAvailable && <NoTickets>N/A</NoTickets>}
+      {showSoldOut && (
+        <NoTickets>
+          Sold out
+        </NoTickets>
+      )}
       {showPrice && (
         <Fragment>
           <Price>

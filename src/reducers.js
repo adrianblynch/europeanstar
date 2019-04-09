@@ -16,8 +16,9 @@ export const trains = (state = {}, { type, data }) => {
     return [...data.outbound.journey, ...data.inbound.journey].reduce((trains, train) => {
       const { id, departureTime, arrivalTime, duration, direct, class: cls, segment: segments } = train
 
-      const classes = cls.map(({ isCheapest, remaining, price: prices }) => {
+      const classes = cls.map(({ isCheapest, remaining, price: prices, isNotAvailable }) => {
         return {
+          isNotAvailable,
           isCheapest,
           remaining,
           prices
