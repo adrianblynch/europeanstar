@@ -1,6 +1,9 @@
 import React, { Fragment } from "react"
 import styled from "styled-components"
 import { ifProp } from "styled-tools"
+import Price from "./Price"
+import NoTickets from "./NoTickets"
+import TicketsRemaining from "./TicketsRemaining"
 
 const StyledCls = styled.div`
   display: flex;
@@ -30,52 +33,21 @@ const StyledCls = styled.div`
 `
 StyledCls.defaultProps = { "data-id": "StyledCls" }
 
-const Price = styled.div`
-  padding-top: 14px;
-  font-weight: bold;
-  font-size: 18px;
-  span {
-    font-size: 13px;
-  }
-`
-Price.defaultProps = { "data-id": "Price" }
-
-const Remaining = styled.div`
-  // 'visibility' over 'display' to maintain the space when rendered
-  ${props => (props.hide ? "visibility: hidden;" : "")}
-  font-size: 13px;
-`
-Remaining.defaultProps = { "data-id": "Remaining" }
-
-const NoTickets = styled.div`
-  font-weight: bold;
-  font-size: 18px;
-`
-NoTickets.defaultProps = { "data-id": "NoTickets" }
-
 const Cls = props => {
   const { index, prices, remaining, isNotAvailable, selected, clsSelected } = props
   const showNotAvailable = isNotAvailable
   const showSoldOut = !isNotAvailable && remaining === 0
   const showPrice = !showSoldOut && prices && prices.adult
   const selectable = showPrice && !selected
-  const hideRemaining = remaining > 50
   const onClick = (selectable && !selected) ? clsSelected(index) : () => {}
   return (
     <StyledCls onClick={onClick} selectable={selectable} selected={selected}>
-      {showNotAvailable && <NoTickets>N/A</NoTickets>}
-      {showSoldOut && (
-        <NoTickets>
-          Sold out
-        </NoTickets>
-      )}
+      {showNotAvailable && <NoTickets text="N/A" />}
+      {showSoldOut && <NoTickets text="Sold out" />}
       {showPrice && (
         <Fragment>
-          <Price>
-            <span>£</span>
-            {prices.adult}
-          </Price>
-          <Remaining hide={hideRemaining}>{remaining} left</Remaining>
+          <Price price={prices.adult} />
+          <TicketsRemaining amount={remaining} />
         </Fragment>
       )}
     </StyledCls>
