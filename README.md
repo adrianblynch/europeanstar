@@ -23,19 +23,19 @@ A single page app for viewing trains going to Europe.
 
 - _GitHub_ hosts the repo
 - _CircleCI_ for continuous integration
-- _Heroku_ hosts the sites, review, staging and production
+- _Heroku_ hosts the sites, review, [staging](https://europeanstar-stg.herokuapp.com/) and [production](https://europeanstar-prod.herokuapp.com/)
 - _Rollbar_ tracks browser errors (at least until the demo runs out!)
 - Repo notifications are sent to _Slack_
 - _Greenkeeper_ checks for package updates
 - _Prettier_ keeps the code looking awesome
 - _Snyk_ checks for vulnerabilities
+- _AWS S3_ as an alternative host ([Production only](http://europeanstar.s3-website.eu-west-2.amazonaws.com/))
 
 ### Todo
 
 - Add automated browser tests. Possibly Cypress
 - ~~Heroku notification to Slack on Production deployments~~
-- Pre-commit hook to run Prettier
-- Alternative deployment to AWS S3
+- ~~Pre-commit hook to run Prettier~~
 - Better styling for tablets and desktop
 - Close datepicker on selection
 - Extract and centralise class colour styles
@@ -45,3 +45,5 @@ A single page app for viewing trains going to Europe.
 - ~~Stop Redux Logger from outputting in tests~~
 - Refactor selectors.getBasket()
 - Style and selectively render the basket
+- ~~Alternative deployment to AWS S3~~
+- Use custom domain

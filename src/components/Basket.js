@@ -19,20 +19,30 @@ const Journey = ({ origin, destination, adults, price, cls }) => {
   )
 }
 
-const SectionFooter = props => {
-  return <Fragment>{props.children}</Fragment>
-}
-
 const Basket = ({ basket }) => {
   const total = (basket.outbound.price || 0) + (basket.inbound.price || 0)
+  const onClick = () => {
+    alert("This isn't a real booking application. Head on over to eurostar.com and purchase your tickets there.")
+  }
+  const showOutbound = !!basket.outbound.origin
+  const showInbound = !!basket.inbound.origin
+  const showTotal = !!total
 
   return (
     <Section>
       <SectionTitle>Basket</SectionTitle>
-      <SectionItem>{basket.outbound.origin && <Journey {...basket.outbound} />}</SectionItem>
-      <SectionItem>{basket.inbound.origin && <Journey {...basket.inbound} />}</SectionItem>
-      <SectionItem>Total: £{total}</SectionItem>
-      <Button>Continue</Button>
+      {showOutbound && (
+        <SectionItem>
+          <Journey {...basket.outbound} />
+        </SectionItem>
+      )}
+      {showInbound && (
+        <SectionItem>
+          <Journey {...basket.inbound} />
+        </SectionItem>
+      )}
+      {showTotal && <SectionItem>Total: £{total}</SectionItem>}
+      <Button onClick={onClick}>Continue</Button>
     </Section>
   )
 }
