@@ -29,7 +29,8 @@ A single page app for viewing trains going to Europe.
 
 ### Todo
 - Add automated browser tests. Possibly Cypress
-- Heroku notification to Slack on Production deployments
 - Pre-commit hook to run Prettier
 - Alternative deployment to AWS S3
 - Better styling for tablets and desktop
+- Close datepicker on selection
+- Extract and centralise class colour styles
