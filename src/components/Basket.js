@@ -1,5 +1,9 @@
 import React, { Fragment } from "react"
 import { connect } from "react-redux"
+import Section from "./Section"
+import SectionTitle from "./SectionTitle"
+import SectionItem from "./SectionItem"
+import Button from "./Button"
 import { getBasket } from "../state/selectors"
 
 const Journey = ({ origin, destination, adults, price, cls }) => {
@@ -15,18 +19,29 @@ const Journey = ({ origin, destination, adults, price, cls }) => {
   )
 }
 
+const SectionFooter = props => {
+  return <Fragment>{props.children}</Fragment>
+}
+
 const Basket = ({ basket }) => {
   const total = (basket.outbound.price || 0) + (basket.inbound.price || 0)
 
   return (
-    <div>
-      <h2>Basket</h2>
-      {basket.outbound.origin && <Journey {...basket.outbound} />}
-      {basket.inbound.origin && <Journey {...basket.inbound} />}
-      <p>Total: {total}</p>
-    </div>
+    <Section>
+      <SectionTitle>Basket</SectionTitle>
+      <SectionItem>{basket.outbound.origin && <Journey {...basket.outbound} />}</SectionItem>
+      <SectionItem>{basket.inbound.origin && <Journey {...basket.inbound} />}</SectionItem>
+      <SectionItem>Total: £{total}</SectionItem>
+      <Button>Continue</Button>
+    </Section>
   )
 }
+
+/*
+<Button type="submit" onClick={this.submit} disabled={loadingTrains}>
+  Search
+</Button>
+*/
 
 const mapStateToProps = state => {
   return {

@@ -7,9 +7,9 @@ import SectionTitle from "./SectionTitle"
 import Loading from "./Loading"
 import { DISPLAY_CLASSES } from "../constants"
 
-const Classes = (props) => {
+const Classes = props => {
   const classes = DISPLAY_CLASSES.map((cls, index) => {
-    return <div key={index}>{ cls }</div>
+    return <div key={index}>{cls}</div>
   })
 
   return <div className={props.className}>{classes}</div>
@@ -48,18 +48,13 @@ const StyledClasses = styled(Classes)`
 `
 
 const TrainList = ({ loadingTrains, label, trains, trainSelected }) => {
-  let list = trains.map(train => {
+  const list = trains.map(train => {
     return (
       <SectionItem key={train.id}>
         <Train trainSelected={trainSelected} {...train} />
       </SectionItem>
     )
   })
-
-  // Whilst developing...
-  if (list.length) {
-    list = [list[0]]
-  }
 
   return (
     <Section>

@@ -7,6 +7,7 @@ export const EBSFLEET = "7015440"
 export const AMSTERDAM = "8400058"
 
 export const DISPLAY_CLASSES = ["Standard", "Standard Premier", "Business Premier"]
+export const CLASS_COLOURS = ["#ffe600", "#109fb3", "#5f718c"]
 
 export const STATIONS = {
   "7015400": "London",
