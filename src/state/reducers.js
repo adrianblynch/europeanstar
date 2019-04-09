@@ -1,5 +1,5 @@
 import { SEARCH_UPDATED, LOADING_TRAINS, TRAINS_LOADED, TRAIN_SELECTED } from "./actions"
-import { STATIONS } from "./constants"
+import { STATIONS } from "../constants"
 
 export const search = (state = {}, { type, data }) => {
   if (type === SEARCH_UPDATED) {

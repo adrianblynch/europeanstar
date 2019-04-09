@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 import { connect } from "react-redux"
-import { getBasket } from "./selectors"
+import { getBasket } from "../state/selectors"
 
 const Journey = ({ origin, destination, adults, price, cls }) => {
   return (

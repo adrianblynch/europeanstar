@@ -1,5 +1,5 @@
 import fecha from "fecha"
-import { DATE_FORMAT, DISPLAY_CLASSES } from "./constants"
+import { DATE_FORMAT, DISPLAY_CLASSES } from "../constants"
 
 export const getDateForUrl = direction => state => fecha.format(new Date(state.search[`${direction}Date`]), DATE_FORMAT)
 

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react"
 import { connect } from "react-redux"
-import { getTrains, isReturn } from "./selectors"
-import { trainSelected } from "./actions"
+import { getTrains, isReturn } from "../state/selectors"
+import { trainSelected } from "../state/actions"
 import TrainList from "./TrainList"
 
 const Trains = props => {

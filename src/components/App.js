@@ -2,11 +2,11 @@ import React from "react"
 import { Provider } from "react-redux"
 import styled, { ThemeProvider } from "styled-components"
 import breakpoint from "styled-components-breakpoint"
-import store from "./store"
+import store from "../state/store"
+import { THEME } from "../constants"
 import Search from "./Search"
 import Trains from "./Trains"
 import Basket from "./Basket"
-import { THEME } from "./constants"
 
 const AppWrapper = styled.div`
   margin: 0 auto;
