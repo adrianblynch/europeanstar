@@ -44,7 +44,7 @@ export const loadTrains = () => async (dispatch, getState) => {
       headers
     })
 
-    // const response = { data: require("./prices.json") }
+    // const response = { data: require("../prices.json") }
 
     dispatch(trainsLoaded(response.data))
     dispatch(loadingTrains(false))

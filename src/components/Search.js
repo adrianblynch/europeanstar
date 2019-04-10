@@ -11,7 +11,7 @@ import Button from "./Button"
 import DatePicker from "./DatePicker"
 
 const now = new Date()
-const tomorrow = now.setDate(now.getDate() + 1)
+const tomorrow = now.setDate(now.getDate() + 2)
 
 class Search extends React.Component {
   state = {
@@ -52,7 +52,8 @@ class Search extends React.Component {
             <Fieldsets>
               <Fieldset>
                 <label>
-                  From:<br />
+                  From:
+                  <br />
                   <select value={outboundStation} onChange={this.onChange} name="outboundStation">
                     <option value={LONDON}>London</option>
                     <option value={EBSFLEET}>Ebsfleet</option>
@@ -61,7 +62,8 @@ class Search extends React.Component {
               </Fieldset>
               <Fieldset>
                 <label>
-                  To:<br/>
+                  To:
+                  <br />
                   <select value={inboundStation} onChange={this.onChange} name="inboundStation">
                     <option value={PARIS}>Paris</option>
                     <option value={AMSTERDAM}>Amsterdam</option>
@@ -75,13 +77,15 @@ class Search extends React.Component {
             <Fieldsets>
               <Fieldset>
                 <label>
-                  Leaving:<br />
+                  Leaving:
+                  <br />
                   <DatePicker selected={outboundDate} onChange={this.outboundDateSelected} />
                 </label>
               </Fieldset>
               <Fieldset>
                 <label>
-                  Returning:<br />
+                  Returning:
+                  <br />
                   <DatePicker selected={inboundDate} onChange={this.inboundDateSelected} />
                 </label>
               </Fieldset>
@@ -92,19 +96,22 @@ class Search extends React.Component {
             <Fieldsets>
               <Fieldset>
                 <label>
-                  Adults:<br />
+                  Adults:
+                  <br />
                   <input type="text" value={adults} onChange={this.onChange} name="adults" />
                 </label>
               </Fieldset>
               <Fieldset>
                 <label>
-                  Youths:<br />
+                  Youths:
+                  <br />
                   <input type="text" value={youths} onChange={this.onChange} name="youths" />
                 </label>
               </Fieldset>
               <Fieldset>
                 <label>
-                  Children:<br />
+                  Children:
+                  <br />
                   <input type="text" value={children} onChange={this.onChange} name="children" />
                 </label>
               </Fieldset>

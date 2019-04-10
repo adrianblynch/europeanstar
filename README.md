@@ -13,6 +13,7 @@ A single page app for viewing trains going to Europe.
 - _Redux_ for state management
 - _Redux Thunk_ for handling async actions
 - _Styled Components_ because 💅
+- _Styled Tools_ to simplify using _Styled Components_
 
 ### Backend
 
@@ -36,14 +37,15 @@ A single page app for viewing trains going to Europe.
 - Add automated browser tests. Possibly Cypress
 - ~~Heroku notification to Slack on Production deployments~~
 - ~~Pre-commit hook to run Prettier~~
-- Better styling for tablets and desktop
+- Better styling between mobile, tablet and desktop
 - Close datepicker on selection
 - Extract and centralise class colour styles
 - ~~Start using styled-tools~~
 - ~~Highlight the chosen fare in class colour~~
-- Hide classes until trains are shown
+- ~~Hide classes until trains are shown~~
 - ~~Stop Redux Logger from outputting in tests~~
 - Refactor selectors.getBasket()
 - Style and selectively render the basket
 - ~~Alternative deployment to AWS S3~~
 - Use custom domain
+- Put behind a CDN
