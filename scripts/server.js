@@ -1,11 +1,16 @@
 const Koa = require("koa")
-const koaStatic = require("koa-static")
+const static = require("koa-static")
+const { default: sslify, xForwardedProtoResolver } = require("koa-sslify")
 const app = new Koa()
 
 require("./config")
 
+if (process.env.ENFORCE_HTTPS === "true") {
+  app.use(sslify({ resolver: xForwardedProtoResolver }))
+}
+
 app.use(
-  koaStatic("build", {
+  static("build", {
     gzip: true,
     br: true,
     maxage: 31536000000, // Cache everything...
