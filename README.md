@@ -43,6 +43,7 @@ A single page app for viewing trains going to Europe.
 - Customise compression to ignore files under a certain size
 - Set up an SSL cert
 - Add routing for next sub-app
+- Force HTTPS
 - ~~Heroku notification to Slack on Production deployments~~
 - ~~Pre-commit hook to run Prettier~~
 - ~~Start using styled-tools~~
