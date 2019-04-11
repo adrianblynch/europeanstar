@@ -1,6 +1,6 @@
 const Koa = require("koa")
 const static = require("koa-static")
-const sslify = require("koa-sslify")
+const { default: sslify } = require("koa-sslify")
 const app = new Koa()
 
 require("./config")
