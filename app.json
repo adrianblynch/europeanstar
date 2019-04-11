@@ -1,7 +1,5 @@
 {
-  "addons": [
-
-  ],
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/nodejs"
@@ -11,6 +9,10 @@
     "CONFIG_ENV": {
       "value": "review",
       "required": true
+    },
+    "ENFORCE_HTTPS": {
+      "value": "true",
+      "required": true
     }
   },
   "formation": {
@@ -19,7 +21,6 @@
     }
   },
   "name": "europeanstar",
-  "scripts": {
-  },
+  "scripts": {},
   "stack": "heroku-18"
 }
