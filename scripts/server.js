@@ -1,12 +1,12 @@
 const Koa = require("koa")
 const static = require("koa-static")
-const { default: sslify } = require("koa-sslify")
+const { default: sslify, xForwardedProtoResolver } = require("koa-sslify")
 const app = new Koa()
 
 require("./config")
 
 if (process.env.ENFORCE_HTTPS === "true") {
-  app.use(sslify({ trustProtoHeader: true }))
+  app.use(sslify({ resolver: xForwardedProtoResolver }))
 }
 
 app.use(
