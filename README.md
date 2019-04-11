@@ -17,7 +17,7 @@ A single page app for viewing trains going to Europe.
 
 ### Backend
 
-- _Koa_ serves the assets
+- _Koa_ serves the assets (at least on Heroku)
 - Assets are compressed with _GZip_ and _Brotli_ (requires > Node 11.7.0)
 
 ### Development
@@ -49,3 +49,6 @@ A single page app for viewing trains going to Europe.
 - ~~Alternative deployment to AWS S3~~
 - Use custom domain
 - Put behind a CDN
+- Customise compression to ignore files under a certain size
+- Set up an SSL cert
+- Add routing for next sub-app

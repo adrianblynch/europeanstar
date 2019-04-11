@@ -20,8 +20,8 @@ class Search extends React.Component {
     inboundStation: PARIS,
     inboundDate: tomorrow,
     adults: 2,
-    youths: 0,
-    children: 0
+    youths: 1,
+    children: 1
   }
 
   outboundDateSelected = date => this.setState({ outboundDate: date })

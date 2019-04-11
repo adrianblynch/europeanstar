@@ -24,7 +24,7 @@ const DatePickerWrapper = styled.div`
   }
 `
 
-const DatePicker = (props) => {
+const DatePicker = props => {
   const isExtraSmall = useMedia("xs")
   const isSmall = useMedia("sm")
   const withPortal = isExtraSmall || isSmall

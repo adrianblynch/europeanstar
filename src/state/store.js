@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import thunk from "redux-thunk"
 import freeze from "redux-freeze"
-import { createLogger } from 'redux-logger'
+import { createLogger } from "redux-logger"
 import { search, loadingTrains, trains, outboundTrains, inboundTrains, outboundSelectedTrain, inboundSelectedTrain } from "./reducers"
 
 const initialState = {

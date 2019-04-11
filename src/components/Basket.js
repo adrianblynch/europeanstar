@@ -1,57 +1,42 @@
-import React, { Fragment } from "react"
+import React from "react"
 import { connect } from "react-redux"
 import Section from "./Section"
 import SectionTitle from "./SectionTitle"
 import SectionItem from "./SectionItem"
 import Button from "./Button"
+import BasketItem from "./BasketItem"
 import { getBasket } from "../state/selectors"
 
-const Journey = ({ origin, destination, adults, price, cls }) => {
-  return (
-    <Fragment>
-      <h3>
-        {origin} to {destination}
-      </h3>
-      <p>
-        {adults} {cls} adult(s) - £{price}
-      </p>
-    </Fragment>
-  )
-}
-
 const Basket = ({ basket }) => {
-  const total = (basket.outbound.price || 0) + (basket.inbound.price || 0)
+  const showOutbound = !!basket.outbound.origin
+  const showInbound = !!basket.inbound.origin
+  const showTotal = true
+  const disableButton = !(showOutbound && showInbound)
+
   const onClick = () => {
     alert("This isn't a real booking application. Head on over to eurostar.com and purchase your tickets there.")
   }
-  const showOutbound = !!basket.outbound.origin
-  const showInbound = !!basket.inbound.origin
-  const showTotal = !!total
 
   return (
     <Section>
       <SectionTitle>Basket</SectionTitle>
       {showOutbound && (
         <SectionItem>
-          <Journey {...basket.outbound} />
+          <BasketItem {...basket.outbound} />
         </SectionItem>
       )}
       {showInbound && (
         <SectionItem>
-          <Journey {...basket.inbound} />
+          <BasketItem {...basket.inbound} />
         </SectionItem>
       )}
-      {showTotal && <SectionItem>Total: £{total}</SectionItem>}
-      <Button onClick={onClick}>Continue</Button>
+      {showTotal && <SectionItem>Total: £{basket.cost}</SectionItem>}
+      <Button onClick={onClick} disabled={disableButton}>
+        Continue
+      </Button>
     </Section>
   )
 }
-
-/*
-<Button type="submit" onClick={this.submit} disabled={loadingTrains}>
-  Search
-</Button>
-*/
 
 const mapStateToProps = state => {
   return {

@@ -9,14 +9,9 @@ const StyledTicketsRemaining = styled.div`
 StyledTicketsRemaining.defaultProps = { "data-id": "Remaining" }
 
 const TicketsRemaining = ({ amount }) => {
-
   const hideRemaining = amount > 50
 
-  return (
-    <StyledTicketsRemaining hide={hideRemaining}>
-      {amount} left
-    </StyledTicketsRemaining>
-  )
+  return <StyledTicketsRemaining hide={hideRemaining}>{amount} left</StyledTicketsRemaining>
 }
 
 export default TicketsRemaining

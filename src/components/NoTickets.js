@@ -8,9 +8,7 @@ const StyledNoTickets = styled.div`
 StyledNoTickets.defaultProps = { "data-id": "NoTickets" }
 
 const NoTickets = ({ text }) => {
-  return (
-    <StyledNoTickets>{text}</StyledNoTickets>
-  )
+  return <StyledNoTickets>{text}</StyledNoTickets>
 }
 
 export default NoTickets
