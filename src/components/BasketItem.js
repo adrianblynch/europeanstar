@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import Cost from "./Cost"
 
 const StyledPassenger = styled.div`
   margin-top: 8px;
@@ -11,7 +12,7 @@ const Passengers = ({ passengers = [], cls }) => {
   return passengers.map(({ type, amount, cost }) => {
     return (
       <StyledPassenger key={type}>
-        {amount} x {cls} {type} - £{cost}
+        {amount} x {cls} {type} - £<Cost cost={cost} />
       </StyledPassenger>
     )
   })

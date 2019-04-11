@@ -1,0 +1,184 @@
+{
+  "outbound": {
+    "class": ["STANDARD", "STANDARD_PREMIER", "BUSINESS_PREMIER"],
+    "journey": [
+      {
+        "id": "9080",
+        "departureTime": "05:40",
+        "arrivalTime": "09:17",
+        "duration": 157,
+        "direct": true,
+        "dobRequired": false,
+        "lsofUnaccompaniedMinors": false,
+        "requiresCustomsChecks": false,
+        "class": [
+          {
+            "isCheapest": true,
+            "remaining": 2,
+            "price": {
+              "adult": 89,
+              "youth": 50,
+              "child": 25
+            }
+          },
+          {
+            "remaining": 7,
+            "price": {
+              "adult": 189,
+              "youth": 150,
+              "child": 125
+            }
+          },
+          {
+            "remaining": 94,
+            "price": {
+              "adult": 289,
+              "youth": 250,
+              "child": 225
+            }
+          }
+        ],
+        "segment": [
+          {
+            "originCode": "7015400",
+            "destinationCode": "8727100",
+            "departureTime": "05:40",
+            "departureDate": "2019-04-05",
+            "duration": 157,
+            "arrivalDate": "2019-04-05",
+            "arrivalTime": "09:17",
+            "trainNumber": "9080",
+            "equipmentType": "TGM",
+            "carrier": "ES",
+            "fares": {
+              "STANDARD": [
+                {
+                  "classOfService": "BZ",
+                  "fareCode": "BZPEXARB",
+                  "toc": null,
+                  "passengerId": "1",
+                  "passengerTypeCode": "PT01AD",
+                  "passengerType": "ADULT",
+                  "passengerIds": ["1", "2"]
+                }
+              ],
+              "STANDARD_PREMIER": [
+                {
+                  "classOfService": "HW",
+                  "fareCode": "HWPEXARB",
+                  "toc": null,
+                  "passengerId": "1",
+                  "passengerTypeCode": "PT01AD",
+                  "passengerType": "ADULT",
+                  "passengerIds": ["1", "2"]
+                }
+              ],
+              "BUSINESS_PREMIER": [
+                {
+                  "classOfService": "AF",
+                  "fareCode": "AFBARB",
+                  "toc": null,
+                  "passengerId": "1",
+                  "passengerTypeCode": "PT00AD",
+                  "passengerType": "ADULT",
+                  "passengerIds": ["1", "2"]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "inbound": {
+    "class": ["STANDARD", "STANDARD_PREMIER", "BUSINESS_PREMIER"],
+    "journey": [
+      {
+        "id": "9007",
+        "departureTime": "07:04",
+        "arrivalTime": "08:32",
+        "duration": 148,
+        "direct": true,
+        "dobRequired": false,
+        "lsofUnaccompaniedMinors": false,
+        "requiresCustomsChecks": false,
+        "class": [
+          {
+            "isCheapest": true,
+            "remaining": 38,
+            "price": {
+              "adult": 74,
+              "youth": 54,
+              "child": 24
+            }
+          },
+          {
+            "remaining": 19,
+            "price": {
+              "adult": 174,
+              "youth": 154,
+              "child": 124
+            }
+          },
+          {
+            "remaining": 39,
+            "price": {
+              "adult": 274,
+              "youth": 254,
+              "child": 224
+            }
+          }
+        ],
+        "segment": [
+          {
+            "originCode": "8727100",
+            "destinationCode": "7015400",
+            "departureTime": "07:04",
+            "departureDate": "2019-04-27",
+            "duration": 148,
+            "arrivalDate": "2019-04-27",
+            "arrivalTime": "08:32",
+            "trainNumber": "9007",
+            "equipmentType": "TGR",
+            "carrier": "ES",
+            "fares": {
+              "STANDARD": [
+                {
+                  "classOfService": "BR",
+                  "fareCode": "BRPEXARB",
+                  "toc": null,
+                  "passengerId": "1",
+                  "passengerTypeCode": "PT01AD",
+                  "passengerType": "ADULT",
+                  "passengerIds": ["1", "2"]
+                }
+              ],
+              "STANDARD_PREMIER": [
+                {
+                  "classOfService": "HX",
+                  "fareCode": "HXPEXARB",
+                  "toc": null,
+                  "passengerId": "1",
+                  "passengerTypeCode": "PT01AD",
+                  "passengerType": "ADULT",
+                  "passengerIds": ["1", "2"]
+                }
+              ],
+              "BUSINESS_PREMIER": [
+                {
+                  "classOfService": "AF",
+                  "fareCode": "AFBARB",
+                  "toc": null,
+                  "passengerId": "1",
+                  "passengerTypeCode": "PT00AD",
+                  "passengerType": "ADULT",
+                  "passengerIds": ["1", "2"]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

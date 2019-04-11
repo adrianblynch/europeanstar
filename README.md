@@ -35,20 +35,20 @@ A single page app for viewing trains going to Europe.
 ### Todo
 
 - Add automated browser tests. Possibly Cypress
-- ~~Heroku notification to Slack on Production deployments~~
-- ~~Pre-commit hook to run Prettier~~
 - Better styling between mobile, tablet and desktop
 - Close datepicker on selection
 - Extract and centralise class colour styles
-- ~~Start using styled-tools~~
-- ~~Highlight the chosen fare in class colour~~
-- ~~Hide classes until trains are shown~~
-- ~~Stop Redux Logger from outputting in tests~~
-- Refactor selectors.getBasket()
-- Style and selectively render the basket
-- ~~Alternative deployment to AWS S3~~
 - Use custom domain
 - Put behind a CDN
 - Customise compression to ignore files under a certain size
 - Set up an SSL cert
 - Add routing for next sub-app
+- ~~Heroku notification to Slack on Production deployments~~
+- ~~Pre-commit hook to run Prettier~~
+- ~~Start using styled-tools~~
+- ~~Highlight the chosen fare in class colour~~
+- ~~Hide classes until trains are shown~~
+- ~~Stop Redux Logger from outputting in tests~~
+- ~~Refactor selectors.getBasket()~~
+- ~~Style and selectively render the basket~~
+- ~~Alternative deployment to AWS S3~~

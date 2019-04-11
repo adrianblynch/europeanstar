@@ -5,6 +5,7 @@ import SectionTitle from "./SectionTitle"
 import SectionItem from "./SectionItem"
 import Button from "./Button"
 import BasketItem from "./BasketItem"
+import Cost from "./Cost"
 import { getBasket } from "../state/selectors"
 
 const Basket = ({ basket }) => {
@@ -20,17 +21,13 @@ const Basket = ({ basket }) => {
   return (
     <Section>
       <SectionTitle>Basket</SectionTitle>
-      {showOutbound && (
+      <SectionItem>{showOutbound ? <BasketItem {...basket.outbound} /> : "Select your outbound train"}</SectionItem>
+      <SectionItem>{showInbound ? <BasketItem {...basket.inbound} /> : "Select your inbound train"}</SectionItem>
+      {showTotal && (
         <SectionItem>
-          <BasketItem {...basket.outbound} />
+          Total: £<Cost cost={basket.cost} />
         </SectionItem>
       )}
-      {showInbound && (
-        <SectionItem>
-          <BasketItem {...basket.inbound} />
-        </SectionItem>
-      )}
-      {showTotal && <SectionItem>Total: £{basket.cost}</SectionItem>}
       <Button onClick={onClick} disabled={disableButton}>
         Continue
       </Button>

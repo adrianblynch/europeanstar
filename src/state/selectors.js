@@ -6,83 +6,53 @@ export const getDateForUrl = direction => state => fecha.format(new Date(state.s
 export const getOutboundDateForUrl = getDateForUrl("outbound")
 export const getInboundDateForUrl = getDateForUrl("inbound")
 
-// TODO: This is in serious need of a refactor!
-export const getBasket = state => {
-  const outbound = {}
-  const inbound = {}
+const getBasketItem = (state, direction) => {
+  const item = { passengers: [] }
   const { search } = state
+  const selectedTrain = getSelectedTrain(state, direction)
+  const isTrainSelected = !!(selectedTrain && selectedTrain.id)
 
-  if (state.outboundSelectedTrain && state.outboundSelectedTrain.id) {
-    const selectedTrain = getSelectedTrain(state, "outbound")
-    const outboundTrain = getTrain(state, selectedTrain.id, selectedTrain)
+  if (isTrainSelected) {
+    const train = getTrain(state, selectedTrain.id, selectedTrain)
 
-    outbound.origin = outboundTrain.origin
-    outbound.destination = outboundTrain.destination
-    outbound.cls = DISPLAY_CLASSES[selectedTrain.classIndex]
-    outbound.passengers = []
+    item.origin = train.origin
+    item.destination = train.destination
+    item.cls = DISPLAY_CLASSES[selectedTrain.classIndex]
 
-    if (outboundTrain.classes) {
-      if (search.adults) {
-        outbound.passengers.push({
-          type: "adult",
-          amount: search.adults,
-          cost: outboundTrain.classes[selectedTrain.classIndex].prices.adult * search.adults
-        })
-      }
+    const prices = train.classes[selectedTrain.classIndex].prices
+    const defaultPrice = prices.adult || prices.youth // Prefer adult over youth and there's never a standalone child price
 
-      if (search.youths) {
-        outbound.passengers.push({
-          type: "youth",
-          amount: search.youths,
-          cost: outboundTrain.classes[selectedTrain.classIndex].prices.youth * search.youths
-        })
-      }
+    if (search.adults) {
+      item.passengers.push({
+        type: "adult",
+        amount: search.adults,
+        cost: (prices.adult || defaultPrice) * search.adults
+      })
+    }
 
-      if (search.children) {
-        outbound.passengers.push({
-          type: "child",
-          amount: search.children,
-          cost: outboundTrain.classes[selectedTrain.classIndex].prices.child * search.children
-        })
-      }
+    if (search.youths) {
+      item.passengers.push({
+        type: "youth",
+        amount: search.youths,
+        cost: (prices.youth || defaultPrice) * search.youths
+      })
+    }
+
+    if (search.children) {
+      item.passengers.push({
+        type: "child",
+        amount: search.children,
+        cost: (prices.child || defaultPrice) * search.children
+      })
     }
   }
 
-  if (state.inboundSelectedTrain && state.inboundSelectedTrain.id) {
-    const selectedTrain = getSelectedTrain(state, "inbound")
-    const inboundTrain = getTrain(state, selectedTrain.id, selectedTrain)
+  return item
+}
 
-    inbound.origin = inboundTrain.origin
-    inbound.destination = inboundTrain.destination
-    inbound.cls = DISPLAY_CLASSES[selectedTrain.classIndex]
-    inbound.passengers = []
-
-    if (inboundTrain.classes) {
-      if (search.adults) {
-        inbound.passengers.push({
-          type: "adult",
-          amount: search.adults,
-          cost: inboundTrain.classes[selectedTrain.classIndex].prices.adult * search.adults
-        })
-      }
-
-      if (search.youths) {
-        inbound.passengers.push({
-          type: "youth",
-          amount: search.youths,
-          cost: inboundTrain.classes[selectedTrain.classIndex].prices.youth * search.youths
-        })
-      }
-
-      if (search.children) {
-        inbound.passengers.push({
-          type: "child",
-          amount: search.children,
-          cost: inboundTrain.classes[selectedTrain.classIndex].prices.child * search.children
-        })
-      }
-    }
-  }
+export const getBasket = state => {
+  const outbound = getBasketItem(state, "outbound")
+  const inbound = getBasketItem(state, "inbound")
 
   const cost =
     outbound.passengers.reduce((total, passenger) => (total = total + passenger.cost), 0) +
@@ -123,16 +93,16 @@ const getSelectedTrain = (state, direction) => {
 }
 
 export const getTrains = (state, direction) => {
-  let trainIds = state[`${direction}Trains`]
+  const trainIds = state[`${direction}Trains`]
   const selectedTrain = getSelectedTrain(state, direction)
-
-  if (trainIds.length > 0) {
-    trainIds = [trainIds[0]]
-  }
 
   return trainIds.map(id => getTrain(state, id, selectedTrain))
 }
 
 export const isReturn = state => {
   return !!state.search.inboundDate
+}
+
+export const getSearch = state => {
+  return state.search
 }

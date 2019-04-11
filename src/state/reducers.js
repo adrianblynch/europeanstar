@@ -3,6 +3,11 @@ import { STATIONS } from "../constants"
 
 export const search = (state = {}, { type, data }) => {
   if (type === SEARCH_UPDATED) {
+    // Ensure passenger types are numeric
+    data.adults = parseInt(data.adults || 0, 10)
+    data.youths = parseInt(data.youths || 0, 10)
+    data.children = parseInt(data.children || 0, 10)
+
     return Object.assign({}, state, data)
   }
 

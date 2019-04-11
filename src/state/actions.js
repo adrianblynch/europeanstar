@@ -23,9 +23,11 @@ export const trainsLoaded = data => {
 
 export const loadTrains = () => async (dispatch, getState) => {
   dispatch(loadingTrains(true))
+  dispatch(trainSelected({ direction: "outbound", id: null, classIndex: null }))
+  dispatch(trainSelected({ direction: "inbound", id: null, classIndex: null }))
 
   const state = getState()
-  const { outboundStation, inboundStation, adults } = state.search
+  const { outboundStation, inboundStation, adults, youths, children } = state.search
 
   const baseUrl = "https://api.prod.eurostar.com/bpa/koa/train-search/uk-en"
   const url = `${baseUrl}/${outboundStation}/${inboundStation}`
@@ -39,12 +41,14 @@ export const loadTrains = () => async (dispatch, getState) => {
         "outbound-date": getOutboundDateForUrl(state),
         "inbound-date": getInboundDateForUrl(state),
         adult: adults,
+        youth: youths,
+        child: children,
         "booking-type": "standard"
       },
       headers
     })
 
-    // const response = { data: require("../prices.json") }
+    // const response = { data: require("../prices-2.json") }
 
     dispatch(trainsLoaded(response.data))
     dispatch(loadingTrains(false))
