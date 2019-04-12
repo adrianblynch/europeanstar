@@ -1,5 +1,5 @@
 import React from "react"
-import { Provider } from "react-redux"
+import { Provider as StateProvider } from "react-redux"
 import styled, { ThemeProvider } from "styled-components"
 import breakpoint from "styled-components-breakpoint"
 import store from "../state/store"
@@ -8,7 +8,7 @@ import Search from "./Search"
 import Trains from "./Trains"
 import Basket from "./Basket"
 
-const AppWrapper = styled.div`
+const StyledApp = styled.div`
   margin: 0 auto;
   max-width: 800px;
   ${breakpoint("md")`
@@ -20,13 +20,13 @@ const AppWrapper = styled.div`
 const App = () => {
   return (
     <ThemeProvider theme={THEME}>
-      <Provider store={store}>
-        <AppWrapper>
+      <StateProvider store={store}>
+        <StyledApp>
           <Search />
           <Trains />
           <Basket />
-        </AppWrapper>
-      </Provider>
+        </StyledApp>
+      </StateProvider>
     </ThemeProvider>
   )
 }

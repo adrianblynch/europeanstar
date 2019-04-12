@@ -41,9 +41,10 @@ A single page app for viewing trains going to Europe.
 - Use custom domain
 - Put behind a CDN
 - Customise compression to ignore files under a certain size
-- Set up an SSL cert
+- Set up an SSL cert for S3 deployment
 - Add routing for next sub-app
-- Force HTTPS
+- Deploy to EC2
+- ~~Force HTTPS~~
 - ~~Heroku notification to Slack on Production deployments~~
 - ~~Pre-commit hook to run Prettier~~
 - ~~Start using styled-tools~~

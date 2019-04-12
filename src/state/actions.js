@@ -7,10 +7,7 @@ export const TRAINS_LOADED = "TRAINS_LOADED"
 export const TRAIN_SELECTED = "TRAIN_SELECTED"
 
 export const searchUpdate = data => {
-  return {
-    type: SEARCH_UPDATED,
-    data
-  }
+  return { type: SEARCH_UPDATED, data }
 }
 
 export const loadingTrains = data => {
@@ -19,6 +16,10 @@ export const loadingTrains = data => {
 
 export const trainsLoaded = data => {
   return { type: TRAINS_LOADED, data }
+}
+
+export const trainSelected = data => {
+  return { type: TRAIN_SELECTED, data }
 }
 
 export const loadTrains = () => async (dispatch, getState) => {
@@ -54,12 +55,5 @@ export const loadTrains = () => async (dispatch, getState) => {
     dispatch(loadingTrains(false))
   } catch (e) {
     console.log("loadTrains():e", e)
-  }
-}
-
-export const trainSelected = data => {
-  return {
-    type: TRAIN_SELECTED,
-    data
   }
 }
