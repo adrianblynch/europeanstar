@@ -5,6 +5,7 @@
   "dependencies": {
     "array.prototype.flatmap": "^1.2.1",
     "axios": "^0.18.0",
+    "cypress": "^3.2.0",
     "directory-tree": "^2.2.1",
     "fecha": "^3.0.2",
     "koa": "^2.7.0",
@@ -42,7 +43,7 @@
     "deploy": "yarn build && CONFIG_ENV=production node scripts/config.js && aws s3 sync build/ s3://europeanstar"
   },
   "engines": {
-    "node": "11.13.0",
+    "node": "11.14.0",
     "yarn": "1.15.2"
   },
   "eslintConfig": {
