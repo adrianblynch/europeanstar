@@ -4,6 +4,14 @@
 
 A single page app for viewing trains going to Europe.
 
+An app to play with various libs, modules and technologies.
+
+Limitations:
+
+- Return journeys only
+- Four possible routes
+- Lightweight error handling
+
 ## Technologies
 
 ### Frontend
@@ -44,6 +52,11 @@ A single page app for viewing trains going to Europe.
 - Set up an SSL cert for S3 deployment
 - Add routing for next sub-app
 - Deploy to EC2
+- Internationalise
+- Translate
+- ~~Hide Basket until relevant~~
+- ~~Refactor display logic into selectors~~
+- ~~Only show the selected trains~~
 - ~~Force HTTPS~~
 - ~~Heroku notification to Slack on Production deployments~~
 - ~~Pre-commit hook to run Prettier~~

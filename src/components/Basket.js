@@ -6,9 +6,13 @@ import SectionItem from "./SectionItem"
 import Button from "./Button"
 import BasketItem from "./BasketItem"
 import Cost from "./Cost"
-import { getBasket } from "../state/selectors"
+import { showBasket, getBasket } from "../state/selectors"
 
-const Basket = ({ basket }) => {
+const Basket = ({ showBasket, basket }) => {
+  if (!showBasket) {
+    return null
+  }
+
   const showOutbound = !!basket.outbound.origin
   const showInbound = !!basket.inbound.origin
   const showTotal = true
@@ -37,6 +41,7 @@ const Basket = ({ basket }) => {
 
 const mapStateToProps = state => {
   return {
+    showBasket: showBasket(state),
     basket: getBasket(state)
   }
 }

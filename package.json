@@ -5,12 +5,12 @@
   "dependencies": {
     "array.prototype.flatmap": "^1.2.1",
     "axios": "^0.18.0",
-    "cypress": "^3.2.0",
     "directory-tree": "^2.2.1",
     "fecha": "^3.0.2",
     "koa": "^2.7.0",
     "koa-sslify": "^4.0.3",
     "koa-static": "^5.0.0",
+    "lodash.get": "^4.4.2",
     "react": "^16.8.5",
     "react-datepicker": "^2.3.0",
     "react-dom": "^16.8.5",
@@ -38,7 +38,7 @@
     "compress": "node scripts/compress.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --print-width 160 --no-semi --write src/**/*.js **/*.js",
+    "format": "prettier --print-width 120 --no-semi --write src/**/*.js **/*.js",
     "analyse": "source-map-explorer 'build/static/js/*.js'",
     "deploy": "yarn build && CONFIG_ENV=production node scripts/config.js && aws s3 sync build/ s3://europeanstar"
   },

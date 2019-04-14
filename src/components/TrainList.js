@@ -5,8 +5,22 @@ import SectionItem from "./SectionItem"
 import SectionTitle from "./SectionTitle"
 import Loading from "./Loading"
 import Classes from "./Classes"
+import Button from "./Button"
 
-const TrainList = ({ loadingTrains, label, trains, trainSelected }) => {
+const Trains = ({ list, showClassHeaders }) => {
+  return (
+    <Fragment>
+      {showClassHeaders && (
+        <SectionItem>
+          <Classes />
+        </SectionItem>
+      )}
+      {list}
+    </Fragment>
+  )
+}
+
+const TrainList = ({ showClassHeaders, showViewAllTrains, loadingTrains, label, trains, trainSelected, trainDeselected, loadError }) => {
   const list = trains.map(train => {
     return (
       <SectionItem key={train.id}>
@@ -15,21 +29,21 @@ const TrainList = ({ loadingTrains, label, trains, trainSelected }) => {
     )
   })
 
+  const showError = !!loadError
+  const showLoading = !showError && loadingTrains
+  const showTrains = !showLoading && !showError
+
   return (
     <Section>
       <SectionTitle>{label}</SectionTitle>
-      {loadingTrains ? (
+      {showError && <SectionItem>️{loadError}</SectionItem>}
+      {showLoading && (
         <SectionItem>
-          <Loading width={150} height={150} />
+          <Loading />
         </SectionItem>
-      ) : (
-        <Fragment>
-          <SectionItem>
-            <Classes />
-          </SectionItem>
-          {list}
-        </Fragment>
       )}
+      {showTrains && <Trains list={list} showClassHeaders={showClassHeaders} />}
+      {showViewAllTrains && <Button onClick={trainDeselected}>View all trains</Button>}
     </Section>
   )
 }

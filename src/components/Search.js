@@ -11,14 +11,14 @@ import Button from "./Button"
 import DatePicker from "./DatePicker"
 
 const now = new Date()
-const tomorrow = now.setDate(now.getDate() + 2)
+const someDayInTheNearFuture = now.setDate(now.getDate() + 5)
 
 class Search extends React.Component {
   state = {
     outboundStation: LONDON,
-    outboundDate: tomorrow,
+    outboundDate: someDayInTheNearFuture,
     inboundStation: PARIS,
-    inboundDate: tomorrow,
+    inboundDate: someDayInTheNearFuture,
     adults: 2,
     youths: 1,
     children: 1
@@ -33,11 +33,6 @@ class Search extends React.Component {
     e.preventDefault()
     this.props.searchUpdate(this.state)
     this.props.loadTrains()
-  }
-
-  // TEMP
-  componentDidMount() {
-    this.submit({ preventDefault: () => {} })
   }
 
   render() {

@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   }
 `
 
-const Loading = ({ width = 100, height = 100 }) => (
+const Loading = ({ width = 150, height = 150 }) => (
   <Wrapper width={width} height={height}>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
       <rect x="19" y="19" width="20" height="20" fill="#06183d">

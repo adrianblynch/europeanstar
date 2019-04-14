@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import thunk from "redux-thunk"
 import freeze from "redux-freeze"
 import { createLogger } from "redux-logger"
-import { search, loadingTrains, trains, outboundTrains, inboundTrains, outboundSelectedTrain, inboundSelectedTrain } from "./reducers"
+import { search, loadingTrains, trains, outboundTrains, inboundTrains, outboundSelectedTrain, inboundSelectedTrain, loadTrainsErrors } from "./reducers"
 
 const initialState = {
   search: {},
@@ -11,7 +11,12 @@ const initialState = {
   outboundTrains: [],
   inboundTrains: [],
   outboundSelectedTrain: { id: null, classIndex: null },
-  inboundSelectedTrain: { id: null, classIndex: null }
+  inboundSelectedTrain: { id: null, classIndex: null },
+  // Let's try nesting inside an object rather than top level `outboundXxx` naming
+  loadTrainsErrors: {
+    outbound: "",
+    inbound: ""
+  }
 }
 
 const reducers = combineReducers({
@@ -21,7 +26,8 @@ const reducers = combineReducers({
   outboundTrains,
   inboundTrains,
   outboundSelectedTrain,
-  inboundSelectedTrain
+  inboundSelectedTrain,
+  loadTrainsErrors
 })
 
 const middleware = [thunk]
