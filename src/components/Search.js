@@ -19,9 +19,9 @@ class Search extends React.Component {
     outboundDate: someDayInTheNearFuture,
     inboundStation: PARIS,
     inboundDate: someDayInTheNearFuture,
-    adults: 2,
-    youths: 1,
-    children: 1
+    adults: 1,
+    youths: 0,
+    children: 0
   }
 
   outboundDateSelected = date => this.setState({ outboundDate: date })
@@ -40,7 +40,7 @@ class Search extends React.Component {
     const { loadingTrains } = this.props
 
     return (
-      <Section>
+      <Section id="search">
         <form>
           <SectionTitle>Search</SectionTitle>
           <SectionItem>

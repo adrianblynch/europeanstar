@@ -20,7 +20,7 @@ const Trains = ({ list, showClassHeaders }) => {
   )
 }
 
-const TrainList = ({ showClassHeaders, showViewAllTrains, loadingTrains, label, trains, trainSelected, trainDeselected, loadError }) => {
+const TrainList = ({ id, showClassHeaders, showViewAllTrains, loadingTrains, label, trains, trainSelected, trainDeselected, loadError }) => {
   const list = trains.map(train => {
     return (
       <SectionItem key={train.id}>
@@ -34,7 +34,7 @@ const TrainList = ({ showClassHeaders, showViewAllTrains, loadingTrains, label, 
   const showTrains = !showLoading && !showError
 
   return (
-    <Section>
+    <Section id={id}>
       <SectionTitle>{label}</SectionTitle>
       {showError && <SectionItem>️{loadError}</SectionItem>}
       {showLoading && (

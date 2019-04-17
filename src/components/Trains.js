@@ -35,6 +35,7 @@ const Trains = props => {
     <Fragment>
       {showOutboundTrainList && (
         <TrainList
+          id="outbound"
           loadingTrains={loadingTrains}
           label="Outbound"
           trains={outboundTrains}
@@ -47,6 +48,7 @@ const Trains = props => {
       )}
       {showInboundTrainList && (
         <TrainList
+          id="inbound"
           loadingTrains={loadingTrains}
           label="Inbound"
           trains={inboundTrains}

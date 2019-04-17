@@ -23,7 +23,7 @@ const Basket = ({ showBasket, basket }) => {
   }
 
   return (
-    <Section>
+    <Section id="basket">
       <SectionTitle>Basket</SectionTitle>
       <SectionItem>{showOutbound ? <BasketItem {...basket.outbound} /> : "Select your outbound train"}</SectionItem>
       <SectionItem>{showInbound ? <BasketItem {...basket.inbound} /> : "Select your inbound train"}</SectionItem>
