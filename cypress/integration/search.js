@@ -22,7 +22,7 @@ describe("Search", () => {
       response: "fixture:london-paris-return-1a-0y-0c.json"
     })
 
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
 
     cy.contains("h2", "Search")
     cy.contains("button", "Search").click()
