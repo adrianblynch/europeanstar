@@ -7,6 +7,8 @@ jobs:
       - checkout
       - run: yarn install
       - run: yarn test
+      - run: yarn build
+      - run: yarn cypress:run
 # No real need for workflows yet but here for future use
 workflows:
   version: 2

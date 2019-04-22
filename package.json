@@ -39,6 +39,7 @@
     "compress": "node scripts/compress.js",
     "test": "react-scripts test",
     "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "format": "prettier --print-width 120 --no-semi --write src/**/*.js **/*.js cypress/**/*.js",
     "analyse": "source-map-explorer 'build/static/js/*.js'",
     "deploy": "yarn build && CONFIG_ENV=production node scripts/config.js && aws s3 sync build/ s3://europeanstar"
