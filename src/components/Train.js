@@ -7,7 +7,7 @@ const StyledTrain = styled.div`
   background-color: #f4f4f4;
   border-radius: 5px;
 `
-StyledTrain.defaultProps = { "data-id": "StyledTrain" }
+StyledTrain.defaultProps = { "data-component": "StyledTrain" }
 
 const StyledTimings = styled.div`
   display: flex;
@@ -22,13 +22,13 @@ const StyledTimings = styled.div`
     font-size: 11px;
   }
 `
-StyledTimings.defaultProps = { "data-id": "StyledTimings" }
+StyledTimings.defaultProps = { "data-component": "StyledTimings" }
 
 const StyledClasses = styled.div`
   display: flex;
   width: 75%;
 `
-StyledClasses.defaultProps = { "data-id": "StyledClasses" }
+StyledClasses.defaultProps = { "data-component": "StyledClasses" }
 
 const Train = props => {
   const { id, departureTime, duration, arrivalTime, classes, selected, trainSelected } = props

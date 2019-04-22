@@ -11,14 +11,14 @@ import Button from "./Button"
 import DatePicker from "./DatePicker"
 
 const now = new Date()
-const someDayInTheNearFuture = now.setDate(now.getDate() + 5)
+const future = now.setDate(now.getDate() + 50)
 
 class Search extends React.Component {
   state = {
     outboundStation: LONDON,
-    outboundDate: someDayInTheNearFuture,
+    outboundDate: future,
     inboundStation: PARIS,
-    inboundDate: someDayInTheNearFuture,
+    inboundDate: future,
     adults: 1,
     youths: 0,
     children: 0

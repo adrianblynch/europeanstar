@@ -9,7 +9,7 @@ const StyledPrice = styled.div`
     font-size: 13px;
   }
 `
-StyledPrice.defaultProps = { "data-id": "Price" }
+StyledPrice.defaultProps = { "data-component": "Price" }
 
 const Price = ({ price }) => {
   return (

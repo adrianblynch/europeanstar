@@ -36,7 +36,7 @@ const DatePicker = props => {
 }
 
 DatePicker.defaultProps = {
-  "data-id": "DatePicker"
+  "data-component": "DatePicker"
 }
 
 export default DatePicker

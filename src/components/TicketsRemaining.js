@@ -6,7 +6,7 @@ const StyledTicketsRemaining = styled.div`
   ${props => (props.hide ? "visibility: hidden;" : "")}
   font-size: 13px;
 `
-StyledTicketsRemaining.defaultProps = { "data-id": "Remaining" }
+StyledTicketsRemaining.defaultProps = { "data-component": "Remaining" }
 
 const TicketsRemaining = ({ amount }) => {
   const hideRemaining = amount > 50

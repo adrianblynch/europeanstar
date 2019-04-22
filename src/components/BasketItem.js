@@ -6,7 +6,7 @@ const StyledPassenger = styled.div`
   margin-top: 8px;
   margin-bottom: 0;
 `
-StyledPassenger.defaultProps = { "data-id": "StyledPassenger" }
+StyledPassenger.defaultProps = { "data-component": "StyledPassenger" }
 
 const Passengers = ({ passengers = [], cls }) => {
   return passengers.map(({ type, amount, cost }) => {
@@ -24,7 +24,7 @@ const StyledBasketItem = styled.div`
     margin-bottom: 0;
   }
 `
-StyledBasketItem.defaultProps = { "data-id": "StyledBasketItem" }
+StyledBasketItem.defaultProps = { "data-component": "StyledBasketItem" }
 
 const BasketItem = props => {
   const { origin, destination, cls, passengers } = props

@@ -22,7 +22,7 @@ const SectionItem = styled.div`
 `
 
 SectionItem.defaultProps = {
-  "data-id": "SectionItem"
+  "data-component": "SectionItem"
 }
 
 export default SectionItem
