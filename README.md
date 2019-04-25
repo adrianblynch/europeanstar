@@ -54,6 +54,7 @@ Limitations:
 - Deploy to EC2
 - Internationalise
 - Translate
+- Merge `lint-staged`, `yarn format` and VS Code's config for Prettier into one of the [available config files](https://prettier.io/docs/en/configuration.html)
 - ~~Hide Basket until relevant~~
 - ~~Refactor display logic into selectors~~
 - ~~Only show the selected trains~~
