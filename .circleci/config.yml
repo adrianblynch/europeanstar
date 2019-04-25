@@ -2,11 +2,12 @@ version: 2
 jobs:
   build_and_test:
     docker:
-      - image: circleci/node:11.13.0-browsers
+      - image: circleci/node:11.14.0-browsers
     steps:
       - checkout
       - run: yarn install
       - run: yarn test
+      - run: yarn cypress:ci
 # No real need for workflows yet but here for future use
 workflows:
   version: 2

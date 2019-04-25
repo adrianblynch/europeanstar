@@ -17,11 +17,9 @@ const StyledCls = styled.div`
   ${ifProp("selectable", "cursor: pointer")};
   ${ifProp(
     "selectable",
-    `
-    &:hover {
+    `&:hover {
       background-color: white;
-    }
-  `
+    }`
   )}
   &:nth-child(1) {
     border-top: 10px solid ${CLASS_COLOURS[0]};
@@ -43,7 +41,7 @@ const StyledCls = styled.div`
     border-top-right-radius: 5px;
   }
 `
-StyledCls.defaultProps = { "data-id": "StyledCls" }
+StyledCls.defaultProps = { "data-component": "StyledCls" }
 
 const Cls = props => {
   const { index, prices, remaining, isNotAvailable, selected, clsSelected } = props

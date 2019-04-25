@@ -96,13 +96,53 @@ export const getTrains = (state, direction) => {
   const trainIds = state[`${direction}Trains`]
   const selectedTrain = getSelectedTrain(state, direction)
 
-  return trainIds.map(id => getTrain(state, id, selectedTrain))
-}
+  // Cheap and cheerful way to filter to the selected train if there
+  const { id } = selectedTrain
+  const ids = id ? [id] : trainIds
 
-export const isReturn = state => {
-  return !!state.search.inboundDate
+  return ids.map(id => getTrain(state, id, selectedTrain))
 }
 
 export const getSearch = state => {
   return state.search
+}
+
+export const getLoadTrainsErrors = state => {
+  return state.loadTrainsErrors
+}
+
+// Check methods
+
+export const hasSelectedTrain = (state, direction) => {
+  const { id, classIndex } = getSelectedTrain(state, direction)
+  return id !== null && classIndex !== null
+}
+
+// Show methods
+
+export const showTrains = state => {
+  return showTrainList(state, "outbound") || showTrainList(state, "inbound")
+}
+
+export const showTrainList = (state, direction) => {
+  const { loadingTrains, loadTrainsErrors } = state
+
+  return loadingTrains || loadTrainsErrors[direction] !== "" || state[`${direction}Trains`].length > 0
+}
+
+export const showClassHeaders = (state, direction) => {
+  return !hasSelectedTrain(state, direction)
+}
+
+export const showViewAllTrains = (state, direction) => {
+  return hasSelectedTrain(state, direction)
+}
+
+export const showBasket = state => {
+  const { loadingTrains, loadTrainsErrors, outboundTrains, inboundTrains } = state
+
+  const errorLoadingTrains = loadTrainsErrors.outbound !== "" || loadTrainsErrors.inbound !== ""
+  const hasTrains = outboundTrains.length > 0 && inboundTrains.length > 0
+
+  return !loadingTrains && !errorLoadingTrains && hasTrains
 }

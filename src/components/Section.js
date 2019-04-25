@@ -5,14 +5,14 @@ const Section = styled.div`
   background-color: #06183d;
   color: white;
   padding: 16px;
-  margin-top: 16px;
+  margin: 16px 0;
   ${breakpoint("md")`
     border-radius: 5px;
   `}
 `
 
 Section.defaultProps = {
-  "data-id": "Section"
+  "data-component": "Section"
 }
 
 export default Section

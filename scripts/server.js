@@ -5,6 +5,8 @@ const app = new Koa()
 
 require("./config")
 
+const port = process.env.PORT || 3000
+
 if (process.env.ENFORCE_HTTPS === "true") {
   app.use(sslify({ resolver: xForwardedProtoResolver }))
 }
@@ -22,4 +24,6 @@ app.use(
   })
 )
 
-app.listen(process.env.PORT || 3001)
+app.listen(port, () => {
+  console.log(`Listening on port ${port}:`)
+})

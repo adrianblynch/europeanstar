@@ -5,7 +5,7 @@ const StyledNoTickets = styled.div`
   font-weight: bold;
   font-size: 18px;
 `
-StyledNoTickets.defaultProps = { "data-id": "NoTickets" }
+StyledNoTickets.defaultProps = { "data-component": "NoTickets" }
 
 const NoTickets = ({ text }) => {
   return <StyledNoTickets>{text}</StyledNoTickets>

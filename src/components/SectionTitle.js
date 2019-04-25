@@ -6,7 +6,7 @@ const SectionTitle = styled.h2`
 `
 
 SectionTitle.defaultProps = {
-  "data-id": "SectionTitle"
+  "data-component": "SectionTitle"
 }
 
 export default SectionTitle

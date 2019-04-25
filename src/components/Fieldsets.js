@@ -7,6 +7,6 @@ const Fieldsets = styled.div`
     flex-direction: row;
   `}
 `
-Fieldsets.defaultProps = { "data-id": "Fieldsets" }
+Fieldsets.defaultProps = { "data-component": "Fieldsets" }
 
 export default Fieldsets
