@@ -47,7 +47,7 @@
     "deploy": "yarn build && CONFIG_ENV=production node scripts/config.js && aws s3 sync build/ s3://europeanstar"
   },
   "engines": {
-    "node": "12.3.0",
+    "node": "12.2.0",
     "yarn": "1.16.0"
   },
   "eslintConfig": {
