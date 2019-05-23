@@ -110,4 +110,19 @@ describe("Search", () => {
       cy.get(trainSelector).should("have.length.gt", 1)
     })
   })
+
+  it("When no inbound trains available, message is shown", () => {
+    cy.server()
+    cy.route({
+      method: "GET",
+      url: "**/train-search/**",
+      response: "fixture:no-inbound.json"
+    })
+
+    cy.contains("button", "Search").click()
+
+    cy.get("#inbound").within(() => {
+      cy.contains("There was a problem loading the inbound trains!")
+    })
+  })
 })

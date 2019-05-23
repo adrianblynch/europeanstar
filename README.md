@@ -42,7 +42,8 @@ Limitations:
 
 ### Todo
 
-- Add automated browser tests. Possibly Cypress
+- ~~Add automated browser tests. Possibly Cypress~~
+- Deploy to Netlify
 - Better styling between mobile, tablet and desktop
 - Close datepicker on selection
 - Extract and centralise class colour styles
