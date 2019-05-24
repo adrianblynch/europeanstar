@@ -42,8 +42,10 @@ Limitations:
 
 ### Todo
 
-- ~~Add automated browser tests. Possibly Cypress~~
+- Explicitly install a version of Yarn on CircleCI image
+- Implement caching in CircleCI
 - Deploy to Netlify
+- ~~Add automated browser tests. Possibly Cypress~~
 - Better styling between mobile, tablet and desktop
 - Close datepicker on selection
 - Extract and centralise class colour styles
