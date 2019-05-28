@@ -42,7 +42,7 @@ Limitations:
 
 ### Todo
 
-- Explicitly install a version of Yarn on CircleCI image
+- Output file size from _scripts/compress.js_
 - Implement caching in CircleCI
 - Deploy to Netlify
 - ~~Add automated browser tests. Possibly Cypress~~

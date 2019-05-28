@@ -1,11 +1,10 @@
 const fs = require("fs")
 const zlib = require("zlib")
 const ls = require("directory-tree")
-const flatMap = require("array.prototype.flatmap")
 
-const getTree = (base, exts = "js|css") => ls("build", { extensions: new RegExp(`\.(${exts})$`) })
+const getTree = (base, exts = "js|css|html|json") => ls("build", { extensions: new RegExp(`\.(${exts})$`) })
 
-const getPaths = node => flatMap(Object.values(node.children), node => (node.type === "directory" ? getPaths(node) : node.path))
+const getPaths = node => node.children.flatMap(child => (child.type === "directory" ? getPaths(child) : child.path))
 
 const logPaths = (label, paths) => console.log(`${label}:\n\t${paths.join("\n\t")}`)
 
@@ -25,7 +24,7 @@ uncompressedPaths.forEach(path => {
 
   compressedPaths.push(compressedGzipPath)
 
-  // Available in Node > 11.13.0 - If definitely needed, userland brotli packages will do the trick too
+  // Available in Node > 11.13.0 - Userland brotli packages will do the trick too for lesser Nodes
   if (zlib.createBrotliCompress) {
     const compressedBrotliPath = `${path}.br`
 
