@@ -42,7 +42,7 @@ Limitations:
 
 ### Todo
 
-- Output file size from _scripts/compress.js_
+- ~~Output file size from _scripts/compress.js_~~
 - Implement caching in CircleCI
 - Deploy to Netlify
 - ~~Add automated browser tests. Possibly Cypress~~
