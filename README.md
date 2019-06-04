@@ -42,6 +42,7 @@ Limitations:
 
 ### Todo
 
+- Don't upload compressed files to S3
 - ~~Output file size from _scripts/compress.js_~~
 - Implement caching in CircleCI
 - Deploy to Netlify
