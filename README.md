@@ -42,11 +42,12 @@ Limitations:
 
 ### Todo
 
+- Cache source checkout in CircleCI
 - Use hooks for search form
 - Update title on search
 - Don't upload compressed files to S3
 - ~~Output file size from _scripts/compress.js_~~
-- Implement caching in CircleCI
+- ~~Implement dependancy caching in CircleCI~~
 - Deploy to Netlify
 - ~~Add automated browser tests. Possibly Cypress~~
 - Better styling between mobile, tablet and desktop

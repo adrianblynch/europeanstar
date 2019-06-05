@@ -4,6 +4,13 @@ jobs:
     docker:
       - image: circleci/node:12.3.1-browsers
     steps:
+      - restore_cache:
+          key: source-{{ .Branch }}-{{ .Revision }}
+      - checkout
+      - save_cache:
+          key: source-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - ".git"
       - checkout
       - restore_cache:
           key: yarn-packages-{{ checksum "yarn.lock" }}
