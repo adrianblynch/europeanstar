@@ -42,7 +42,7 @@ Limitations:
 
 ### Todo
 
-- Cache source checkout in CircleCI
+- ~~Cache source checkout in CircleCI~~
 - Use hooks for search form
 - Update title on search
 - Don't upload compressed files to S3
