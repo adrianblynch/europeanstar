@@ -5,7 +5,13 @@ jobs:
       - image: circleci/node:12.3.1-browsers
     steps:
       - checkout
-      - run: yarn install
+      - restore_cache:
+        key: yarn-packages-{{ checksum "yarn.lock" }}
+      - run: yarn install --frozen-lockfile
+      - save_cache:
+        key: yarn-packages-{{ checksum "yarn.lock" }}
+        paths:
+          - ~/.cache/yarn
       - run: yarn test
       - run: yarn cypress:ci
 # No real need for workflows yet but here for future use
