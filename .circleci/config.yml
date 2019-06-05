@@ -6,13 +6,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-        keys:
-          - yarn-packages-{{ checksum "yarn.lock" }}
+          keys: yarn-packages-{{ checksum "yarn.lock" }}
       - run: yarn install --frozen-lockfile
       - save_cache:
-        key: yarn-packages-{{ checksum "yarn.lock" }}
-        paths:
-          - ~/.cache/yarn
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
       - run: yarn test
       - run: yarn cypress:ci
 # No real need for workflows yet but here for future use
