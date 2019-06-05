@@ -42,6 +42,8 @@ Limitations:
 
 ### Todo
 
+- Use hooks for search form
+- Update title on search
 - Don't upload compressed files to S3
 - ~~Output file size from _scripts/compress.js_~~
 - Implement caching in CircleCI

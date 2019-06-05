@@ -37,17 +37,14 @@ const useMedia = breakpoint => {
     return acc
   }, {})
 
-  useEffect(
-    (breakpoint, queries) => {
-      const mediaQueryList = window.matchMedia(queries[breakpoint])
-      setMatches(mediaQueryList.matches)
+  useEffect(() => {
+    const mediaQueryList = window.matchMedia(queries[breakpoint])
+    setMatches(mediaQueryList.matches)
 
-      const handleChange = e => setMatches(e.matches)
-      mediaQueryList.addListener(handleChange)
-      return () => mediaQueryList.removeListener(handleChange)
-    },
-    [breakpoint, queries]
-  )
+    const handleChange = e => setMatches(e.matches)
+    mediaQueryList.addListener(handleChange)
+    return () => mediaQueryList.removeListener(handleChange)
+  }, [breakpoint, queries])
 
   return matches
 }
