@@ -44,7 +44,8 @@
     "cypress:ci": "yarn build && start-server-and-test start http://localhost:3000 cypress:test",
     "format": "prettier --print-width 120 --no-semi --write src/**/*.js **/*.js cypress/**/*.js",
     "analyse": "source-map-explorer 'build/static/js/*.js'",
-    "deploy:s3": "yarn build && CONFIG_ENV=production node scripts/config.js && aws s3 sync build/ s3://europeanstar --delete --exclude .DS_Store"
+    "deploy:s3": "yarn build && CONFIG_ENV=production node scripts/config.js && aws s3 sync build/ s3://europeanstar --delete --exclude .DS_Store",
+    "deploy:netlify": "yarn build && CONFIG_ENV=production node scripts/config.js"
   },
   "engines": {
     "node": "12.3.1",
