@@ -1,6 +1,15 @@
 import React, { Fragment } from "react"
 import { connect } from "react-redux"
-import { showTrains, showTrainList, showClassHeaders, showViewAllTrains, getTrains, getLoadTrainsErrors } from "../state/selectors"
+import {
+  showTrains,
+  showTrainList,
+  showClassHeaders,
+  showViewAllTrains,
+  getTrains,
+  getLoadTrainsErrors,
+  getOutboundDateForDisplay,
+  getInboundDateForDisplay
+} from "../state/selectors"
 import { trainSelected, trainDeselected } from "../state/actions"
 import TrainList from "./TrainList"
 
@@ -18,7 +27,9 @@ const Trains = props => {
     inboundTrains,
     trainSelected,
     trainDeselected,
-    loadTrainsErrors
+    loadTrainsErrors,
+    outboundDate,
+    inboundDate
   } = props
   const { outbound: outboundTrainsError, inbound: inboundTrainsError } = loadTrainsErrors
 
@@ -31,13 +42,16 @@ const Trains = props => {
   const outboundTrainDeselected = () => trainDeselected({ direction: "outbound" })
   const inboundTrainDeselected = () => trainDeselected({ direction: "inbound" })
 
+  const outboundLabel = "Outbound" + (outboundDate ? ` - ${outboundDate}` : "")
+  const inboundLabel = "Inbound" + (inboundDate ? ` - ${inboundDate}` : "")
+
   return (
     <Fragment>
       {showOutboundTrainList && (
         <TrainList
           id="outbound"
           loadingTrains={loadingTrains}
-          label="Outbound"
+          label={outboundLabel}
           trains={outboundTrains}
           trainSelected={outboundTrainSelected}
           trainDeselected={outboundTrainDeselected}
@@ -50,7 +64,7 @@ const Trains = props => {
         <TrainList
           id="inbound"
           loadingTrains={loadingTrains}
-          label="Inbound"
+          label={inboundLabel}
           trains={inboundTrains}
           trainSelected={inboundTrainSelected}
           trainDeselected={inboundTrainDeselected}
@@ -75,7 +89,9 @@ const mapStateToProps = state => {
     loadingTrains: state.loadingTrains,
     outboundTrains: getTrains(state, "outbound"),
     inboundTrains: getTrains(state, "inbound"),
-    loadTrainsErrors: getLoadTrainsErrors(state)
+    loadTrainsErrors: getLoadTrainsErrors(state),
+    outboundDate: getOutboundDateForDisplay(state),
+    inboundDate: getInboundDateForDisplay(state)
   }
 }
 

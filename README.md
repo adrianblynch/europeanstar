@@ -42,9 +42,10 @@ Limitations:
 
 ### Todo
 
+- Remove Rollbar (it has expired)
+- ~~Add dates to Outbound and Inbound listings~~
 - ~~Cache source checkout in CircleCI~~
-- Use hooks for search form
-- Update title on search
+- Use hooks for search form (maybe)
 - Don't upload compressed files to S3
 - ~~Output file size from _scripts/compress.js_~~
 - ~~Implement dependancy caching in CircleCI~~

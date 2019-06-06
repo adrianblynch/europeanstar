@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import ReactDatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
-import { DISPLAY_DATE_FORMAT } from "../constants"
+import { FORM_DATE_FORMAT } from "../constants"
 import { useMedia } from "../hooks"
 
 // Not ideal but styling the datepicker is a little tricky so duplicate styles are here
@@ -30,7 +30,13 @@ const DatePicker = props => {
   const withPortal = isExtraSmall || isSmall
   return (
     <DatePickerWrapper>
-      <ReactDatePicker withPortal={withPortal} {...props} selected={new Date(props.selected)} dateFormat={DISPLAY_DATE_FORMAT} minDate={new Date()} />
+      <ReactDatePicker
+        withPortal={withPortal}
+        {...props}
+        selected={new Date(props.selected)}
+        dateFormat={FORM_DATE_FORMAT}
+        minDate={new Date()}
+      />
     </DatePickerWrapper>
   )
 }

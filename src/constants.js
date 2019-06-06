@@ -1,5 +1,6 @@
-export const DISPLAY_DATE_FORMAT = "dd/MM/yyyy"
-export const DATE_FORMAT = "YYYY-MM-DD"
+export const FORM_DATE_FORMAT = "dd/MM/yyyy"
+export const URL_DATE_FORMAT = "YYYY-MM-DD"
+export const DISPLAY_DATE_FORMAT = "Do MMM YYYY"
 
 export const LONDON = "7015400"
 export const PARIS = "8727100"

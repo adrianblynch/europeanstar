@@ -1,7 +1,8 @@
 import fecha from "fecha"
-import { DATE_FORMAT, DISPLAY_CLASSES } from "../constants"
+import { URL_DATE_FORMAT, DISPLAY_DATE_FORMAT, DISPLAY_CLASSES } from "../constants"
 
-export const getDateForUrl = direction => state => fecha.format(new Date(state.search[`${direction}Date`]), DATE_FORMAT)
+export const getDateForUrl = direction => state =>
+  fecha.format(new Date(state.search[`${direction}Date`]), URL_DATE_FORMAT)
 
 export const getOutboundDateForUrl = getDateForUrl("outbound")
 export const getInboundDateForUrl = getDateForUrl("inbound")
@@ -110,6 +111,20 @@ export const getSearch = state => {
 export const getLoadTrainsErrors = state => {
   return state.loadTrainsErrors
 }
+
+const getDateForDisplay = direction => state => {
+  const date = state.search[`${direction}Date`]
+
+  if (date) {
+    const dateObj = new Date(date)
+    return fecha.format(dateObj, DISPLAY_DATE_FORMAT)
+  }
+
+  return null
+}
+
+export const getOutboundDateForDisplay = getDateForDisplay("outbound")
+export const getInboundDateForDisplay = getDateForDisplay("inbound")
 
 // Check methods
 
