@@ -1,6 +1,6 @@
 # Europeanstar
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/adrianblynch/europeanstar.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/adrianblynch/europeanstar.svg)](https://greenkeeper.io/) [![Netlify Status](https://api.netlify.com/api/v1/badges/af7f873b-71bf-408e-be53-12fcf3e3bb1a/deploy-status)](https://app.netlify.com/sites/wonderful-easley-b24b5b/deploys)
 
 A single page app for viewing trains going to Europe.
 
