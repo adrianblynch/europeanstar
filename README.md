@@ -39,6 +39,7 @@ Limitations:
 - _Prettier_ keeps the code looking awesome
 - _Snyk_ checks for vulnerabilities
 - _AWS S3_ as an alternative host ([Production only](http://europeanstar.s3-website.eu-west-2.amazonaws.com/))
+- Merges to _master_ build on Netlify available at https://wonderful-easley-b24b5b.netlify.com and https://es.halestorm.co.uk/
 
 ### Todo
 
