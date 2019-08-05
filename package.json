@@ -30,7 +30,7 @@
     "lint-staged": "^8.2.0",
     "prettier": "^1.18.0",
     "source-map-explorer": "^2.0.0",
-    "start-server-and-test": "^1.9.0"
+    "start-server-and-test": "^1.9.2"
   },
   "scripts": {
     "start": "node scripts/server.js",
