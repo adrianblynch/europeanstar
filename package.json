@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "chalk": "^2.4.2",
-    "cypress": "^3.2.0",
+    "cypress": "^3.4.1",
     "directory-tree": "^2.2.1",
     "fecha": "^3.0.2",
     "koa": "^2.7.0",
@@ -23,7 +23,8 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.3.1",
     "styled-components-breakpoint": "^2.1.1",
-    "styled-tools": "^1.7.1"
+    "styled-tools": "^1.7.1",
+    "snyk": "^1.217.3"
   },
   "devDependencies": {
     "husky": "^2.4.0",
@@ -45,7 +46,9 @@
     "format": "prettier --print-width 120 --no-semi --write src/**/*.js **/*.js cypress/**/*.js",
     "analyse": "source-map-explorer 'build/static/js/*.js'",
     "deploy:s3": "yarn build && CONFIG_ENV=production node scripts/config.js && aws s3 sync build/ s3://europeanstar --delete --exclude .DS_Store",
-    "deploy:netlify": "yarn build && CONFIG_ENV=production node scripts/config.js"
+    "deploy:netlify": "yarn build && CONFIG_ENV=production node scripts/config.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "engines": {
     "node": "12.3.1",
@@ -70,5 +73,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "snyk": true
 }
