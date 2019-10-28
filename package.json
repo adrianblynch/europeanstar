@@ -8,7 +8,7 @@
     "cypress": "^3.2.0",
     "directory-tree": "^2.2.1",
     "fecha": "^3.0.2",
-    "koa": "^2.7.0",
+    "koa": "^2.11.0",
     "koa-sslify": "^4.0.3",
     "koa-static": "^5.0.0",
     "lodash.get": "^4.4.2",
