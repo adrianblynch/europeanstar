@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "chalk": "^2.4.2",
-    "cypress": "^3.2.0",
+    "cypress": "^4.0.1",
     "directory-tree": "^2.2.1",
     "fecha": "^3.0.2",
     "koa": "^2.7.0",
