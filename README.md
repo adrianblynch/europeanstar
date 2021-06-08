@@ -77,3 +77,5 @@ Limitations:
 - ~~Refactor selectors.getBasket()~~
 - ~~Style and selectively render the basket~~
 - ~~Alternative deployment to AWS S3~~
+- Add back engines section to package.json once we're caught up with package updates: `"engines": { "node": "12.3.1", "yarn": "1.16.0" },`
+- Proxy API requests through server for both dev and production

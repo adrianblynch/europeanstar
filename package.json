@@ -47,10 +47,6 @@
     "deploy:s3": "yarn build && CONFIG_ENV=production node scripts/config.js && aws s3 sync build/ s3://europeanstar --delete --exclude .DS_Store",
     "deploy:netlify": "yarn build && CONFIG_ENV=production node scripts/config.js"
   },
-  "engines": {
-    "node": "12.3.1",
-    "yarn": "1.16.0"
-  },
   "eslintConfig": {
     "extends": "react-app"
   },

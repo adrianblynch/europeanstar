@@ -3,7 +3,7 @@ const zlib = require("zlib")
 const ls = require("directory-tree")
 const chalk = require("chalk")
 
-const getTree = (base, exts = "js|css|html|json") => ls("build", { extensions: new RegExp(`\.(${exts})$`) })
+const getTree = (base, exts = "js|css|html|json") => ls(base, { extensions: new RegExp(`\.(${exts})$`) })
 const getFiles = node =>
   node.children.flatMap(child =>
     child.type === "directory" ? getFiles(child) : { originalPath: child.path, originalSize: child.size }
@@ -11,9 +11,7 @@ const getFiles = node =>
 const logFiles = files => {
   files.map(file =>
     console.log(
-      chalk`${file.originalPath} - {red original: ${file.originalSize}b} {blue gzip: ${
-        file.gzipSize
-      }b} {yellow brotli: ${file.brotliSize}b}`
+      chalk`${file.originalPath} - {red original: ${file.originalSize}b} {blue gzip: ${file.gzipSize}b} {yellow brotli: ${file.brotliSize}b}`
     )
   )
 }
